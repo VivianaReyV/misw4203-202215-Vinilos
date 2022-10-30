@@ -16,3 +16,4 @@ jobs:
       if: github.event.action == 'opened'
       with:
         project: 'https://github.com/users/VivianaReyV/projects/1'
+        column_name: 'Todo'
