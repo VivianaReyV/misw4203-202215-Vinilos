@@ -41,14 +41,12 @@ jobs:
           uses: boneskull/more-linked-issues-action@v0.2.1
           with:
             github-token: '${{ secrets.VINILOS_SECRET }}'
-        - name: Get comma-delimited list of found links
-          run: echo "${{ steps.link-issues.outputs.links }}"
         - name: Move PR to ${{ env.in_progress }}
           uses: leonsteinhaeuser/project-beta-automations@v2.0.1
           with:
             gh_token: ${{ secrets.VINILOS_SECRET }}
             user: VivianaReyV
             project_id: 1
-            resource_node_id: ${{ github.event.pull_request.node_id }}
-            #status_value: ${{ env.in_progress }} # Target status
+            resource_node_id: ${{ steps.link-issues.outputs.links }}
+            status_value: ${{ env.pruebas }} # Target status
             
