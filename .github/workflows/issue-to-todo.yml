@@ -32,6 +32,7 @@ jobs:
           project_id: 1
           resource_node_id: ${{ github.event.issue.node_id }}
           status_value: ${{ env.todo }} # Target status
+          run: echo "${{ github.event.issue.node_id }}"
   pr_opened_or_reopened_or_reviewrequested:
       name: pr_opened_or_reopened_or_reviewrequested
       runs-on: ubuntu-latest
