@@ -10,4 +10,4 @@
 
 ### Evidencia:
 
-*Adjunta imagenes o cualquier otra evidencia*
+*Adjunta imágenes o cualquier otra evidencia*
