@@ -14,4 +14,4 @@ jobs:
         with:
           project: Vinilos - Development
           column: Todo
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          repo-token: ${{ secrets.VINILOS_SECRET }}
