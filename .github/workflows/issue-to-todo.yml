@@ -16,6 +16,7 @@ on:
 env:
   todo: Todo ✏️
   done: Done ✅
+  pruebas: Pruebas
   in_progress: In Progress 🚧
 
 jobs:
