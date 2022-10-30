@@ -64,6 +64,6 @@ jobs:
             gh_token: ${{ secrets.VINILOS_SECRET }}
             user: VivianaReyV
             project_id: 1
-            resource_node_id: ${{ steps.one.outputs.substring }}
+            resource_node_id: ${{ steps.get-issue-id.outputs.issue-id }}
             status_value: ${{ env.pruebas }} # Target status
             
