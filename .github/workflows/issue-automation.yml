@@ -15,9 +15,8 @@ on:
       - closed
 # map fields with customized labels
 env:
-  todo: Todo ✏️
-  code_review: Pruebas 🚧
-  done: Done ✅
+  todo: Todo
+  code_review: Pruebas
 
 jobs:
   # Assign to project and update status to Todo
