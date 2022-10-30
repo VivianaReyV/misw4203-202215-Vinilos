@@ -37,12 +37,12 @@ jobs:
       runs-on: ubuntu-latest
       if: github.event_name == 'pull_request' && (github.event.action == 'opened' || github.event.action == 'reopened' || github.event.action == 'review_requested')
       steps:
-        - id: check-linked-issues
-          uses: nearform/github-action-check-linked-issues@v1
+        - id: link-issues
+          uses: boneskull/more-linked-issues-action@v0.2.1
           with:
             github-token: '${{ secrets.VINILOS_SECRET }}'
         - name: Get comma-delimited list of found links
-          run: echo "${{ steps.check-linked-issues.outputs.linked_issues_count }}}"
+          run: echo "${{ steps.link-issues.outputs.links }}"
         - name: Move PR to ${{ env.in_progress }}
           uses: leonsteinhaeuser/project-beta-automations@v2.0.1
           with:
