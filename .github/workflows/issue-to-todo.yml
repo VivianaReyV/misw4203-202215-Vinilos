@@ -56,7 +56,7 @@ jobs:
             issue-repository: 'VivianaReyV/misw4203-202215-Vinilos'
             issue-number: ${{ steps.one.outputs.substring }}
         - name: Print
-          run: echo "${{ steps.get-project-id.outputs.project-id }}"
+          run: echo "${{ steps.get-project-id.outputs.issue-id }}"
         - name: Move PR to ${{ env.in_progress }}
           uses: leonsteinhaeuser/project-beta-automations@v2.0.1
           with:
