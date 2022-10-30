@@ -7,6 +7,6 @@ jobs:
     steps:
     - uses: konradpabjan/actions-add-new-issue-to-column@v1.1
       with:
-        action-token: "${{ secrets.VINILOS_TOKEN }}"
+        action-token: "${{ secrets.VINILOS_TOKEN1 }}"
         project-url: "https://github.com/users/VivianaReyV/projects/1"
         column-name: "Todo"
