@@ -49,8 +49,14 @@ jobs:
             value: ${{ steps.link-issues.outputs.links }}
             index_of_str: "#"
           # steps.one.outputs.substring = 'c123'
+        - uses: monry/actions-get-issue-id@v1
+          with:
+            # Personal Access Token that with `org:read` are granted.
+            github-token: ${{ secrets.VINILOS_SECRET }}
+            issue-repository: 'VivianaReyV/misw4203-202215-Vinilos'
+            issue-number: ${{ steps.one.outputs.substring }}
         - name: Print
-          run: echo "${{ github.event }}"
+          run: echo "${{ steps.get-project-id.outputs.project-id }}"
         - name: Move PR to ${{ env.in_progress }}
           uses: leonsteinhaeuser/project-beta-automations@v2.0.1
           with:
