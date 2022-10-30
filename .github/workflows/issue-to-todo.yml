@@ -49,6 +49,8 @@ jobs:
             value: ${{ steps.link-issues.outputs.links }}
             index_of_str: "#"
           # steps.one.outputs.substring = 'c123'
+        - name: Print
+          run: echo "${{ github.event }}"
         - name: Move PR to ${{ env.in_progress }}
           uses: leonsteinhaeuser/project-beta-automations@v2.0.1
           with:
