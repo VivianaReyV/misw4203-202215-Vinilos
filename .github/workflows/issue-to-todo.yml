@@ -1,12 +1,18 @@
+name: Auto Assign to Project(s)
+
 on:
   issues:
-    types: [opened]
+    types: [opened, labeled]
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
 jobs:
-  Add_New_Issue_To_Project:
+  assign_one_project:
     runs-on: ubuntu-latest
+    name: Assign to One Project
     steps:
-    - uses: konradpabjan/actions-add-new-issue-to-column@v1.1
+    - name: Assign NEW issues and NEW pull requests to project 2
+      uses: srggrs/assign-one-project-github-action@1.2.1
+      if: github.event.action == 'opened'
       with:
-        action-token: "${{ secrets.VINILOS_SECRET }}"
-        project-url: "https://github.com/users/VivianaReyV/projects/1"
-        column-name: "Todo"
+        project: 'https://github.com/users/VivianaReyV/projects/1'
