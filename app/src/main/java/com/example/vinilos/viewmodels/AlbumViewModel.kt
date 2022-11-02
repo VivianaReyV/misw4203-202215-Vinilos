@@ -8,6 +8,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.vinilos.models.Album
 import com.example.vinilos.network.NetworkServiceAdapter
+import com.google.gson.Gson
+import org.json.JSONObject
 
 class AlbumViewModel (application: Application) : AndroidViewModel(application) {
 
@@ -15,9 +17,13 @@ class AlbumViewModel (application: Application) : AndroidViewModel(application) 
         value = "This is album Fragment"
      }
     private val _albums = MutableLiveData<List<Album>>()
+    private val _album = MutableLiveData<JSONObject>()
 
     val albums: LiveData<List<Album>>
         get() = _albums
+
+    val album: LiveData<JSONObject>
+        get() = _album
 
     private var _eventNetworkError = MutableLiveData<Boolean>(false)
 
@@ -30,7 +36,8 @@ class AlbumViewModel (application: Application) : AndroidViewModel(application) 
         get() = _isNetworkErrorShown
 
     init {
-        refreshDataFromNetwork()
+         refreshDataFromNetwork()
+        // createAlbumFromNetwork()
     }
     private fun refreshDataFromNetwork() {
         NetworkServiceAdapter.getInstance(getApplication()).getAlbums({
@@ -40,8 +47,46 @@ class AlbumViewModel (application: Application) : AndroidViewModel(application) 
         },{
             _eventNetworkError.value = true
         })
+        /*val albumToCreate = Album(null,"Un verano sin ti",
+            "https://i.pinimg.com/564x/aa/5f/ed/aa5fed7fac61cc8f41d1e79db917a7cd.jpg",
+            "2022-08-01T00:00:00-05:00",
+            "un verano sin ti es de bad bunny",
+            "Reggeaton",
+            "Rimas Entertainment"
+        )
+        val gson = Gson()
+        val jsonBody = gson.toJson(albumToCreate)
+        val jsonObject = JSONObject(jsonBody)
+
+        NetworkServiceAdapter.getInstance(getApplication()).postAlbum(jsonObject, {
+            _album.postValue(it)
+            _eventNetworkError.value = false
+            _isNetworkErrorShown.value = false
+        },{
+            _eventNetworkError.value = true
+        })*/
+
     }
 
+    /*private fun createAlbumFromNetwork() {
+        val albumToCreate = Album(null,"Un verano sin ti",
+            "https://i.pinimg.com/564x/aa/5f/ed/aa5fed7fac61cc8f41d1e79db917a7cd.jpg",
+            "2022-08-01T00:00:00-05:00",
+            "un verano sin ti es de bad bunny",
+            "Reggeaton",
+            "Rimas Entertainment"
+            )
+        val gson = Gson()
+        val jsonBody = gson.toJson(albumToCreate)
+        val jsonObject = JSONObject(jsonBody)
+        try {
+            NetworkServiceAdapter.getInstance(getApplication()).postAlbum()
+        } catch ( exception: Exception) {
+            println("errrorrr")
+        }
+
+    }
+*/
     fun onNetworkErrorShown() {
         _isNetworkErrorShown.value = true
     }

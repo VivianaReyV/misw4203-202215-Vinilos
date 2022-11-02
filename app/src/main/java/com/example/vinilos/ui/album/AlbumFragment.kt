@@ -57,6 +57,7 @@ class AlbumFragment : Fragment() {
         viewModel.albums.observe(viewLifecycleOwner, Observer<List<Album>> {
             it.apply {
                 viewModelAdapter!!.albums = this
+                binding.progressBar.visibility = View.INVISIBLE
             }
         })
         viewModel.eventNetworkError.observe(viewLifecycleOwner, Observer<Boolean> { isNetworkError ->
