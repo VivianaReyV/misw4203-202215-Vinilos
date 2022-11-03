@@ -9,7 +9,11 @@
         android:id="@+id/nav_album"
         android:name="com.example.vinilos.ui.album.AlbumFragment"
         android:label="@string/menu_album"
-        tools:layout="@layout/fragment_album" />
+        tools:layout="@layout/fragment_album" >
+        <action
+            android:id="@+id/action_nav_album_to_nav_create_album"
+            app:destination="@id/nav_create_album" />
+    </fragment>
     <fragment
         android:id="@+id/nav_home"
         android:name="com.example.vinilos.ui.home.HomeFragment"
@@ -27,4 +31,10 @@
         android:name="com.example.vinilos.ui.slideshow.SlideshowFragment"
         android:label="@string/menu_slideshow"
         tools:layout="@layout/fragment_slideshow" />
+
+    <fragment
+        android:id="@+id/nav_create_album"
+        android:name="com.example.vinilos.ui.album.CreateAlbumFragment"
+        android:label="Create Album"
+        tools:layout="@layout/fragment_create_album" />
 </navigation>

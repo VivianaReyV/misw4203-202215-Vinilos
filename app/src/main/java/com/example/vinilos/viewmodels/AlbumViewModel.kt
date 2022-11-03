@@ -37,7 +37,7 @@ class AlbumViewModel (application: Application) : AndroidViewModel(application) 
 
     init {
          refreshDataFromNetwork()
-        // createAlbumFromNetwork()
+         createAlbumFromNetwork()
     }
     private fun refreshDataFromNetwork() {
         NetworkServiceAdapter.getInstance(getApplication()).getAlbums({
@@ -51,8 +51,8 @@ class AlbumViewModel (application: Application) : AndroidViewModel(application) 
             "https://i.pinimg.com/564x/aa/5f/ed/aa5fed7fac61cc8f41d1e79db917a7cd.jpg",
             "2022-08-01T00:00:00-05:00",
             "un verano sin ti es de bad bunny",
-            "Reggeaton",
-            "Rimas Entertainment"
+            "Rock",
+            "Elektra"
         )
         val gson = Gson()
         val jsonBody = gson.toJson(albumToCreate)
@@ -68,25 +68,28 @@ class AlbumViewModel (application: Application) : AndroidViewModel(application) 
 
     }
 
-    /*private fun createAlbumFromNetwork() {
+    private fun createAlbumFromNetwork() {
         val albumToCreate = Album(null,"Un verano sin ti",
             "https://i.pinimg.com/564x/aa/5f/ed/aa5fed7fac61cc8f41d1e79db917a7cd.jpg",
             "2022-08-01T00:00:00-05:00",
             "un verano sin ti es de bad bunny",
-            "Reggeaton",
-            "Rimas Entertainment"
-            )
+            "Rock",
+            "Elektra"
+        )
         val gson = Gson()
         val jsonBody = gson.toJson(albumToCreate)
         val jsonObject = JSONObject(jsonBody)
-        try {
-            NetworkServiceAdapter.getInstance(getApplication()).postAlbum()
-        } catch ( exception: Exception) {
-            println("errrorrr")
-        }
+
+        NetworkServiceAdapter.getInstance(getApplication()).postAlbum(jsonObject, {
+            _album.postValue(it)
+            _eventNetworkError.value = false
+            _isNetworkErrorShown.value = false
+        },{
+            _eventNetworkError.value = true
+        })
 
     }
-*/
+
     fun onNetworkErrorShown() {
         _isNetworkErrorShown.value = true
     }

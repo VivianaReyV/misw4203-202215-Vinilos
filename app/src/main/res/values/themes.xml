@@ -11,6 +11,7 @@
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+        <item name="buttonStyle">@style/buttonStyle</item>
         <!-- Customize your theme here. -->
     </style>
 
@@ -22,4 +23,11 @@
     <style name="Theme.Vinilos.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.Vinilos.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="buttonStyle" parent="Widget.AppCompat.Button">
+        <item name="android:textSize">@dimen/abc_text_size_button_material</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:background">@drawable/background_form_create_button</item>
+    </style>
 </resources>

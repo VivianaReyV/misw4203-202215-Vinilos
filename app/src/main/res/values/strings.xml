@@ -13,4 +13,10 @@
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
     <string name="menu_app_name">Vinilos App</string>
+    <string name="nombre">Nombre</string>
+    <string name="fecha_lanzamiento">Fecha de lanzamiento</string>
+    <string name="descripcion">Descripción</string>
+    <string name="discografia">Discografia</string>
+    <string name="crearAlbum">Crear Álbum</string>
+    <string name="portada">Portada</string>
 </resources>
