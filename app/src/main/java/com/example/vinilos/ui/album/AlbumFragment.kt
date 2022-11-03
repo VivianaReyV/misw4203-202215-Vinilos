@@ -1,16 +1,22 @@
 package com.example.vinilos.ui.album
 
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.vinilos.MainActivity
 import com.example.vinilos.databinding.FragmentAlbumBinding
 import com.example.vinilos.models.Album
 import com.example.vinilos.ui.adapters.AlbumsAdapter
@@ -45,6 +51,7 @@ class AlbumFragment : Fragment() {
         recyclerView = binding.albumsRv
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.adapter = viewModelAdapter
+        binding.rollButton.setOnClickListener{clickButton(view)}
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -63,6 +70,7 @@ class AlbumFragment : Fragment() {
         viewModel.eventNetworkError.observe(viewLifecycleOwner, Observer<Boolean> { isNetworkError ->
             if (isNetworkError) onNetworkError()
         })
+
     }
 
     override fun onDestroyView() {
@@ -77,4 +85,7 @@ class AlbumFragment : Fragment() {
         }
     }
 
+    fun clickButton(view: View){
+        Navigation.findNavController(view).navigate(R.id.action_nav_album_to_nav_create_album);
+    }
 }

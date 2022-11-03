@@ -32,6 +32,7 @@
                     android:layout_width="198dp"
                     android:layout_height="150dp"
                     android:layout_marginTop="20px"
+                    android:scaleType="centerCrop"
                     android:layout_gravity="center_horizontal"
                     android:src="@drawable/coverdefault" />
                 <LinearLayout

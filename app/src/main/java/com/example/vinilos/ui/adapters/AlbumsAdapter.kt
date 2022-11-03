@@ -1,11 +1,16 @@
 package com.example.vinilos.ui.adapters
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.ImageView
 import androidx.annotation.LayoutRes
+import androidx.core.content.ContextCompat.startActivity
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.vinilos.R
 import com.example.vinilos.databinding.AlbumItemBinding
 import com.example.vinilos.models.Album
@@ -32,6 +37,7 @@ class AlbumsAdapter : RecyclerView.Adapter<AlbumsAdapter.AlbumViewHolder>(){
         holder.viewDataBinding.also {
             it.album = albums[position]
         }
+        loadUrl(albums[position].cover,holder.viewDataBinding.cover)
         holder.viewDataBinding.root.setOnClickListener {
             // val action = AlbumFragmentDirections.actionAlbumFragmentToCommentFragment(albums[position].albumId)
             // Navigate using that action
@@ -52,5 +58,14 @@ class AlbumsAdapter : RecyclerView.Adapter<AlbumsAdapter.AlbumViewHolder>(){
         }
     }
 
+    fun loadUrl(url: String, imgView : ImageView) {
+        try {
+            Glide.with(imgView).load(url).error(R.drawable.coverdefault).into(imgView)
+        }catch (e : Exception){
+            println("errorsito")
+            //sendError(e,"loadUrl", url)
+        }
+
+    }
 
 }
