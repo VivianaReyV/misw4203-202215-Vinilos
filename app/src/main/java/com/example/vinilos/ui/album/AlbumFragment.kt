@@ -63,7 +63,7 @@ class AlbumFragment : Fragment() {
         viewModel = ViewModelProvider(this, AlbumViewModel.Factory(activity.application)).get(AlbumViewModel::class.java)
         viewModel.albums.observe(viewLifecycleOwner, Observer<List<Album>> {
             it.apply {
-                viewModelAdapter!!.albums = this
+                viewModelAdapter!!.albums = this.sortedByDescending { it.releaseDate }
                 binding.progressBar.visibility = View.INVISIBLE
             }
         })
