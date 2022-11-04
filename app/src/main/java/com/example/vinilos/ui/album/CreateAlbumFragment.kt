@@ -4,15 +4,15 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.example.vinilos.databinding.FragmentAlbumBinding
 import com.example.vinilos.databinding.FragmentCreateAlbumBinding
-import com.example.vinilos.databinding.FragmentGalleryBinding
-import com.example.vinilos.ui.adapters.AlbumsAdapter
+import com.example.vinilos.models.Album
 import com.example.vinilos.viewmodels.AlbumViewModel
-import com.example.vinilos.viewmodels.GalleryViewModel
+import com.google.android.material.datepicker.MaterialDatePicker.Builder.datePicker
+
 
 class CreateAlbumFragment: Fragment() {
 
@@ -21,28 +21,61 @@ class CreateAlbumFragment: Fragment() {
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
+    private lateinit var viewModel: AlbumViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        /*val createAlbumViewModel =
-            ViewModelProvider(this).get(GalleryViewModel::class.java)*/
+        viewModel =
+            ViewModelProvider(this).get(AlbumViewModel::class.java)
 
         _binding = FragmentCreateAlbumBinding.inflate(inflater, container, false)
         val root: View = binding.root
-
- //       val textView: TextView = binding.textView
-        /*galleryViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }*/
         return root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
+
+        binding.createButton.setOnClickListener{createAlbum(view)}
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+
+        viewModel.eventCreateAlbumSuccess.observe(viewLifecycleOwner, Observer<Boolean> { successAlbumCreated ->
+            if (successAlbumCreated) onSuccessAlbumCreated()
+        })
+    }
+
+    fun createAlbum(view: View){
+        val albumToCreate = Album(null,
+            binding.nombreAlbum.text.toString(),
+            binding.cover.text.toString(),
+            binding.fechaLanzamiento.text.toString(),
+            binding.descripcion.text.toString(),
+            binding.genero.text.toString(),
+            binding.discografia.text.toString()
+        )
+        viewModel.createAlbumFromNetwork(albumToCreate)
+
+    }
+
+
+
+    private fun onSuccessAlbumCreated(){
+        if(!viewModel.isCreateAlbumSuccessShown.value!!) {
+            Toast.makeText(activity, "Albúm creado exitosamente", Toast.LENGTH_LONG).show()
+            viewModel.onSuccessAlbumCreatedShown()
+
+        }
     }
 
 

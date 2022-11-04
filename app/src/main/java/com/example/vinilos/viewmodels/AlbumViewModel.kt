@@ -35,9 +35,18 @@ class AlbumViewModel (application: Application) : AndroidViewModel(application) 
     val isNetworkErrorShown: LiveData<Boolean>
         get() = _isNetworkErrorShown
 
+    private var _eventCreateAlbumSuccess = MutableLiveData<Boolean>(false)
+
+    val eventCreateAlbumSuccess: LiveData<Boolean>
+        get() = _eventCreateAlbumSuccess
+
+    private var _isCreateAlbumSuccessShown = MutableLiveData<Boolean>(false)
+
+    val isCreateAlbumSuccessShown: LiveData<Boolean>
+        get() = _isCreateAlbumSuccessShown
+
     init {
          refreshDataFromNetwork()
-         createAlbumFromNetwork()
     }
     private fun refreshDataFromNetwork() {
         NetworkServiceAdapter.getInstance(getApplication()).getAlbums({
@@ -68,24 +77,19 @@ class AlbumViewModel (application: Application) : AndroidViewModel(application) 
 
     }
 
-    private fun createAlbumFromNetwork() {
-        val albumToCreate = Album(null,"Un verano sin ti",
-            "https://i.pinimg.com/564x/aa/5f/ed/aa5fed7fac61cc8f41d1e79db917a7cd.jpg",
-            "2022-08-01T00:00:00-05:00",
-            "un verano sin ti es de bad bunny",
-            "Rock",
-            "Elektra"
-        )
+    fun createAlbumFromNetwork(albumToCreate: Album) {
         val gson = Gson()
         val jsonBody = gson.toJson(albumToCreate)
         val jsonObject = JSONObject(jsonBody)
 
         NetworkServiceAdapter.getInstance(getApplication()).postAlbum(jsonObject, {
-            _album.postValue(it)
             _eventNetworkError.value = false
             _isNetworkErrorShown.value = false
+            _eventCreateAlbumSuccess.value = true
         },{
             _eventNetworkError.value = true
+            _eventCreateAlbumSuccess.value = false
+            _isCreateAlbumSuccessShown.value = false
         })
 
     }
@@ -93,6 +97,11 @@ class AlbumViewModel (application: Application) : AndroidViewModel(application) 
     fun onNetworkErrorShown() {
         _isNetworkErrorShown.value = true
     }
+
+    fun onSuccessAlbumCreatedShown() {
+        _isCreateAlbumSuccessShown.value = true
+    }
+
 
     class Factory(val app: Application) : ViewModelProvider.Factory {
 
