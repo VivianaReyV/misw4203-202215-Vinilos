@@ -49,9 +49,11 @@ class CreateAlbumFragment: Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-
         viewModel.eventCreateAlbumSuccess.observe(viewLifecycleOwner, Observer<Boolean> { successAlbumCreated ->
             if (successAlbumCreated) onSuccessAlbumCreated()
+        })
+        viewModel.eventNetworkError.observe(viewLifecycleOwner, Observer<Boolean> { isNetworkError ->
+            if (isNetworkError) onNetworkError()
         })
     }
 
@@ -68,8 +70,6 @@ class CreateAlbumFragment: Fragment() {
 
     }
 
-
-
     private fun onSuccessAlbumCreated(){
         if(!viewModel.isCreateAlbumSuccessShown.value!!) {
             Toast.makeText(activity, "Albúm creado exitosamente", Toast.LENGTH_LONG).show()
@@ -78,5 +78,10 @@ class CreateAlbumFragment: Fragment() {
         }
     }
 
-
+    private fun onNetworkError() {
+        if (!viewModel.isNetworkErrorShown.value!!) {
+            Toast.makeText(activity, "Error al crear albúm", Toast.LENGTH_LONG).show()
+            viewModel.onNetworkErrorShown()
+        }
+    }
 }
