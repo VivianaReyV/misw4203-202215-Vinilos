@@ -35,6 +35,6 @@
     <fragment
         android:id="@+id/nav_create_album"
         android:name="com.example.vinilos.ui.album.CreateAlbumFragment"
-        android:label="Create Album"
+        android:label="@string/add_album"
         tools:layout="@layout/fragment_create_album" />
 </navigation>
