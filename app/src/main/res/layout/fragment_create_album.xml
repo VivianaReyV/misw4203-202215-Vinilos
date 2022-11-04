@@ -5,7 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white">
-
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -35,6 +37,7 @@
             android:textColor="@color/dark_green"></TextView>
 
         <EditText
+            android:id="@+id/nombreAlbum"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginStart="25dp"
@@ -54,6 +57,7 @@
             android:textColor="@color/dark_green"></TextView>
 
         <EditText
+            android:id="@+id/fechaLanzamiento"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginStart="25dp"
@@ -73,6 +77,7 @@
             android:textColor="@color/dark_green"></TextView>
 
         <EditText
+            android:id="@+id/descripcion"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginStart="25dp"
@@ -88,10 +93,33 @@
             android:layout_marginTop="15dp"
             android:layout_marginEnd="25dp"
             android:layout_marginBottom="5dp"
+            android:text="@string/genero"
+            android:textColor="@color/dark_green"></TextView>
+
+        <EditText
+            android:id="@+id/genero"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="25dp"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/background_formulario"
+            android:textColor="@color/dark_green"></EditText>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="25dp"
+            android:layout_marginBottom="5dp"
             android:text="@string/discografia"
             android:textColor="@color/dark_green"></TextView>
 
         <EditText
+            android:id="@+id/discografia"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginStart="25dp"
@@ -112,6 +140,7 @@
             android:textColor="@color/dark_green"></TextView>
 
         <EditText
+            android:id="@+id/cover"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginStart="25dp"
@@ -120,6 +149,7 @@
             android:layout_marginBottom="5dp"
             android:background="@drawable/background_formulario"
             android:textColor="@color/dark_green"></EditText>
+
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/createButton"
@@ -132,4 +162,5 @@
             android:text="Crear Álbum"
             />
     </LinearLayout>
+    </ScrollView>
 </LinearLayout>
