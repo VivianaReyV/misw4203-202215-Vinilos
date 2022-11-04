@@ -74,7 +74,7 @@ class CreateAlbumFragment: Fragment() {
         if(!viewModel.isCreateAlbumSuccessShown.value!!) {
             Toast.makeText(activity, "Albúm creado exitosamente", Toast.LENGTH_LONG).show()
             viewModel.onSuccessAlbumCreatedShown()
-
+            activity?.onBackPressed()
         }
     }
 
