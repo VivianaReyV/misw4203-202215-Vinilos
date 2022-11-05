@@ -44,6 +44,7 @@
             android:layout_marginTop="5dp"
             android:layout_marginEnd="25dp"
             android:layout_marginBottom="5dp"
+            android:paddingLeft="10dp"
             android:background="@drawable/background_formulario"></EditText>
 
         <TextView
@@ -64,6 +65,8 @@
             android:layout_marginTop="5dp"
             android:layout_marginEnd="25dp"
             android:layout_marginBottom="5dp"
+            android:paddingLeft="10dp"
+            android:hint="@string/hint_date_format"
             android:background="@drawable/background_formulario"></EditText>
 
         <TextView
@@ -84,6 +87,7 @@
             android:layout_marginTop="5dp"
             android:layout_marginEnd="25dp"
             android:layout_marginBottom="5dp"
+            android:paddingLeft="10dp"
             android:background="@drawable/background_formulario"></EditText>
 
         <TextView
@@ -96,17 +100,18 @@
             android:text="@string/genero"
             android:textColor="@color/dark_green"></TextView>
 
-        <EditText
-            android:id="@+id/genero"
+        <Spinner
+            android:id="@+id/spinnerGenre"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginStart="25dp"
             android:layout_marginTop="5dp"
             android:layout_marginEnd="25dp"
             android:layout_marginBottom="5dp"
-            android:background="@drawable/background_formulario"
-            android:textColor="@color/dark_green"></EditText>
-
+            android:background="@drawable/background_spinner"
+            android:textColor="@color/dark_green"
+            android:overlapAnchor="false"
+            android:spinnerMode="dropdown"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -118,16 +123,18 @@
             android:text="@string/discografia"
             android:textColor="@color/dark_green"></TextView>
 
-        <EditText
-            android:id="@+id/discografia"
+        <Spinner
+            android:id="@+id/spinnerRecordLabel"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginStart="25dp"
             android:layout_marginTop="5dp"
             android:layout_marginEnd="25dp"
             android:layout_marginBottom="5dp"
-            android:background="@drawable/background_formulario"
-            android:textColor="@color/dark_green"></EditText>
+            android:background="@drawable/background_spinner"
+            android:textColor="@color/dark_green"
+            android:overlapAnchor="false"
+            android:spinnerMode="dropdown"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -148,6 +155,8 @@
             android:layout_marginEnd="25dp"
             android:layout_marginBottom="5dp"
             android:background="@drawable/background_formulario"
+            android:paddingLeft="10dp"
+            android:hint="@string/hint_cover_url"
             android:textColor="@color/dark_green"></EditText>
 
 

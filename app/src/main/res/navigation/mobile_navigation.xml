@@ -6,6 +6,12 @@
     app:startDestination="@+id/nav_home">
 
     <fragment
+        android:id="@+id/nav_home"
+        android:name="com.example.vinilos.ui.home.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
         android:id="@+id/nav_album"
         android:name="com.example.vinilos.ui.album.AlbumFragment"
         android:label="@string/menu_album"
@@ -14,22 +20,23 @@
             android:id="@+id/action_nav_album_to_nav_create_album"
             app:destination="@id/nav_create_album" />
     </fragment>
-    <fragment
-        android:id="@+id/nav_home"
-        android:name="com.example.vinilos.ui.home.HomeFragment"
-        android:label="@string/menu_home"
-        tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/nav_gallery"
         android:name="com.example.vinilos.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
+        android:label="@string/menu_artist"
         tools:layout="@layout/fragment_gallery" />
 
     <fragment
         android:id="@+id/nav_slideshow"
         android:name="com.example.vinilos.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
+        android:label="@string/menu_collector"
+        tools:layout="@layout/fragment_slideshow" />
+
+    <fragment
+        android:id="@+id/nav_about"
+        android:name="com.example.vinilos.ui.slideshow.SlideshowFragment"
+        android:label="@string/menu_about"
         tools:layout="@layout/fragment_slideshow" />
 
     <fragment

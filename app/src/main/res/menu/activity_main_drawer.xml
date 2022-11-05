@@ -3,22 +3,34 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
-    <group android:checkableBehavior="single">
-        <item
-            android:id="@+id/nav_album"
-            android:icon="@drawable/album"
-            android:title="@string/menu_album" />
+    <group
+        android:id="@+id/group1"
+        android:checkableBehavior="single">
         <item
             android:id="@+id/nav_home"
             android:icon="@drawable/home"
             android:title="@string/menu_home" />
         <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="@string/menu_gallery" />
+            android:id="@+id/nav_album"
+            android:icon="@drawable/album"
+            android:title="@string/menu_album" />
         <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="@string/menu_slideshow" />
+            android:id="@+id/nav_artist"
+            android:icon="@drawable/microphone_icon"
+            android:title="@string/menu_artist" />
+        <item
+            android:id="@+id/nav_collector"
+            android:icon="@drawable/music_icon"
+            android:title="@string/menu_collector" />
     </group>
+
+    <group
+        android:id="@+id/group2"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_about"
+            android:icon="@drawable/info_icon"
+            android:title="@string/menu_about" />
+    </group>
+
 </menu>

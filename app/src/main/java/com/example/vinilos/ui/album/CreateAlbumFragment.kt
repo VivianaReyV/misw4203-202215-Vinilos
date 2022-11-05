@@ -1,9 +1,11 @@
 package com.example.vinilos.ui.album
 
+import android.R
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -11,7 +13,6 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.vinilos.databinding.FragmentCreateAlbumBinding
 import com.example.vinilos.models.Album
 import com.example.vinilos.viewmodels.AlbumViewModel
-import com.google.android.material.datepicker.MaterialDatePicker.Builder.datePicker
 
 
 class CreateAlbumFragment: Fragment() {
@@ -37,9 +38,44 @@ class CreateAlbumFragment: Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-
-
         binding.createButton.setOnClickListener{createAlbum(view)}
+
+        // Set genre items
+        val genreItems: MutableList<String> = ArrayList()
+        genreItems.add("Classical")
+        genreItems.add("Folk")
+        genreItems.add("Rock")
+        genreItems.add("Salsa")
+
+        context?.let { context ->
+            ArrayAdapter(
+                context,
+                android.R.layout.simple_spinner_item,
+                genreItems
+            ).also { adapter ->
+                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                binding.spinnerGenre.adapter = adapter
+            }
+        }
+
+        // Set recordlabel items
+        val recordlabelItems: MutableList<String> = ArrayList()
+        recordlabelItems.add("Discos Fuentes")
+        recordlabelItems.add("Elektra")
+        recordlabelItems.add("EMI")
+        recordlabelItems.add("Fania Records")
+        recordlabelItems.add("Sony Music")
+
+        context?.let { context ->
+            ArrayAdapter(
+                context,
+                android.R.layout.simple_spinner_item,
+                recordlabelItems
+            ).also { adapter ->
+                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                binding.spinnerRecordLabel.adapter = adapter
+            }
+        }
     }
 
     override fun onDestroyView() {
@@ -74,23 +110,6 @@ class CreateAlbumFragment: Fragment() {
             formError("El campo Descripción no puede estar vacío")
             return
         }
-        if (binding.genero.text.toString() != " Clasical" &&
-            binding.genero.text.toString() != "Salsa" &&
-            binding.genero.text.toString() != "Rock" &&
-            binding.genero.text.toString() != "Folk")
-        {
-            formError("El campo Género debe ser: Classical, Salsa, Rock o Folk")
-            return
-        }
-        if (binding.discografia.text.toString() != " Sony Music" &&
-            binding.discografia.text.toString() != "EMI" &&
-            binding.discografia.text.toString() != "Discos Fuentes" &&
-            binding.discografia.text.toString() != "Elektra" &&
-            binding.discografia.text.toString() != "Fania Records")
-        {
-            formError("El campo Discografia debe ser: Sony Music, EMI, Discos Fuentes, Elektra o Fania Records")
-            return
-        }
         val regex = Regex("^\\d{4}-\\d{2}-\\d{2}$")
         if (!regex.matches(binding.fechaLanzamiento.text.toString()))
         {
@@ -102,8 +121,8 @@ class CreateAlbumFragment: Fragment() {
             binding.cover.text.toString(),
             binding.fechaLanzamiento.text.toString(),
             binding.descripcion.text.toString(),
-            binding.genero.text.toString(),
-            binding.discografia.text.toString()
+            binding.spinnerGenre.selectedItem.toString(),
+            binding.spinnerRecordLabel.selectedItem.toString()
         )
         viewModel.createAlbumFromNetwork(albumToCreate)
 

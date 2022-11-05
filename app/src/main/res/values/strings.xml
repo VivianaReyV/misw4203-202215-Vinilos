@@ -8,9 +8,12 @@
     <string name="action_settings">Settings</string>
     <string name="title_albums">Albums</string>
     <string name="add_album">Agregar Album</string>
-    <string name="menu_album">Album</string>
+    <string name="menu_album">Álbumes</string>
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
+    <string name="menu_artist">Artistas</string>
+    <string name="menu_collector">Coleccionistas</string>
+    <string name="menu_about">Acerca de</string>
     <string name="menu_slideshow">Slideshow</string>
     <string name="menu_app_name">Vinilos App</string>
     <string name="nombre">Nombre</string>
@@ -20,4 +23,6 @@
     <string name="crearAlbum">Crear Álbum</string>
     <string name="portada">Portada</string>
     <string name="genero">Genero</string>
+    <string name="hint_date_format">aaaa-mm-dd</string>
+    <string name="hint_cover_url">https://mi-portada.com</string>
 </resources>
