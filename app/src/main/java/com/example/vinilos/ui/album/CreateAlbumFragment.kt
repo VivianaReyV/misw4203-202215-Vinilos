@@ -50,10 +50,10 @@ class CreateAlbumFragment: Fragment() {
         context?.let { context ->
             ArrayAdapter(
                 context,
-                android.R.layout.simple_spinner_item,
+                R.layout.simple_spinner_item,
                 genreItems
             ).also { adapter ->
-                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                adapter.setDropDownViewResource(R.layout.simple_spinner_dropdown_item)
                 binding.spinnerGenre.adapter = adapter
             }
         }
@@ -69,7 +69,7 @@ class CreateAlbumFragment: Fragment() {
         context?.let { context ->
             ArrayAdapter(
                 context,
-                android.R.layout.simple_spinner_item,
+                R.layout.simple_spinner_item,
                 recordlabelItems
             ).also { adapter ->
                 adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
@@ -93,16 +93,17 @@ class CreateAlbumFragment: Fragment() {
         })
     }
 
-    fun createAlbum(view: View){
+    private fun createAlbum(view: View){
 
         if (binding.nombreAlbum.text.toString() == null || binding.nombreAlbum.text.toString() == "")
         {
             formError("El campo nombre no puede estar vacío")
             return
         }
-        if (binding.cover.text.toString() == null || binding.cover.text.toString() == "")
+        val regex = Regex("^\\d{4}-\\d{2}-\\d{2}$")
+        if (!regex.matches(binding.fechaLanzamiento.text.toString()))
         {
-            formError("El campo Portada no puede estar vacío")
+            formError("El campo Fecha de lanzamiento no es válido")
             return
         }
         if (binding.descripcion.text.toString() == null || binding.descripcion.text.toString() == "")
@@ -110,10 +111,9 @@ class CreateAlbumFragment: Fragment() {
             formError("El campo Descripción no puede estar vacío")
             return
         }
-        val regex = Regex("^\\d{4}-\\d{2}-\\d{2}$")
-        if (!regex.matches(binding.fechaLanzamiento.text.toString()))
+        if (binding.cover.text.toString() == null || binding.cover.text.toString() == "")
         {
-            formError("El campo Fecha de lanzamiento no es válido")
+            formError("El campo Portada no puede estar vacío")
             return
         }
         val albumToCreate = Album(null,
@@ -124,7 +124,7 @@ class CreateAlbumFragment: Fragment() {
             binding.spinnerGenre.selectedItem.toString(),
             binding.spinnerRecordLabel.selectedItem.toString()
         )
-        viewModel.createAlbumFromNetwork(albumToCreate)
+        viewModel.createAlbum(albumToCreate)
 
     }
 

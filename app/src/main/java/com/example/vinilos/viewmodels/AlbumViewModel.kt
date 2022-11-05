@@ -7,15 +7,16 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.vinilos.models.Album
-import com.example.vinilos.network.NetworkServiceAdapter
+import com.example.vinilos.repositories.AlbumRepository
 import com.google.gson.Gson
 import org.json.JSONObject
 
 class AlbumViewModel (application: Application) : AndroidViewModel(application) {
 
-     private val _text = MutableLiveData<String>().apply {
+    private val albumsRepository = AlbumRepository(application)
+    private val _text = MutableLiveData<String>().apply {
         value = "This is album Fragment"
-     }
+    }
     private val _albums = MutableLiveData<List<Album>>()
     private val _album = MutableLiveData<JSONObject>()
 
@@ -49,49 +50,27 @@ class AlbumViewModel (application: Application) : AndroidViewModel(application) 
          refreshDataFromNetwork()
     }
     private fun refreshDataFromNetwork() {
-        NetworkServiceAdapter.getInstance(getApplication()).getAlbums({
+        albumsRepository.refreshData({
             _albums.postValue(it)
             _eventNetworkError.value = false
             _isNetworkErrorShown.value = false
         },{
             _eventNetworkError.value = true
         })
-        /*val albumToCreate = Album(null,"Un verano sin ti",
-            "https://i.pinimg.com/564x/aa/5f/ed/aa5fed7fac61cc8f41d1e79db917a7cd.jpg",
-            "2022-08-01T00:00:00-05:00",
-            "un verano sin ti es de bad bunny",
-            "Rock",
-            "Elektra"
-        )
-        val gson = Gson()
-        val jsonBody = gson.toJson(albumToCreate)
-        val jsonObject = JSONObject(jsonBody)
-
-        NetworkServiceAdapter.getInstance(getApplication()).postAlbum(jsonObject, {
-            _album.postValue(it)
-            _eventNetworkError.value = false
-            _isNetworkErrorShown.value = false
-        },{
-            _eventNetworkError.value = true
-        })*/
-
     }
 
-    fun createAlbumFromNetwork(albumToCreate: Album) {
-        val gson = Gson()
-        val jsonBody = gson.toJson(albumToCreate)
-        val jsonObject = JSONObject(jsonBody)
-
-        NetworkServiceAdapter.getInstance(getApplication()).postAlbum(jsonObject, {
-            _eventNetworkError.value = false
-            _isNetworkErrorShown.value = false
-            _eventCreateAlbumSuccess.value = true
-        },{
-            _eventNetworkError.value = true
-            _eventCreateAlbumSuccess.value = false
-            _isCreateAlbumSuccessShown.value = false
-        })
-
+    fun createAlbum(albumToCreate: Album) {
+        albumsRepository.createAlbum(albumToCreate,
+            {
+                _eventNetworkError.value = false
+                _isNetworkErrorShown.value = false
+                _eventCreateAlbumSuccess.value = true
+            },{
+                _eventNetworkError.value = true
+                _eventCreateAlbumSuccess.value = false
+                _isCreateAlbumSuccessShown.value = false
+            }
+        )
     }
 
     fun onNetworkErrorShown() {
@@ -101,7 +80,6 @@ class AlbumViewModel (application: Application) : AndroidViewModel(application) 
     fun onSuccessAlbumCreatedShown() {
         _isCreateAlbumSuccessShown.value = true
     }
-
 
     class Factory(val app: Application) : ViewModelProvider.Factory {
 
