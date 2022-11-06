@@ -23,19 +23,19 @@
 
     <fragment
         android:id="@+id/nav_gallery"
-        android:name="com.example.vinilos.ui.gallery.GalleryFragment"
+        android:name="com.example.vinilos.ui.performers.PerformerFragment"
         android:label="@string/menu_artist"
         tools:layout="@layout/fragment_gallery" />
 
     <fragment
         android:id="@+id/nav_slideshow"
-        android:name="com.example.vinilos.ui.slideshow.SlideshowFragment"
+        android:name="com.example.vinilos.ui.collectors.CollectorFragment"
         android:label="@string/menu_collector"
         tools:layout="@layout/fragment_slideshow" />
 
     <fragment
         android:id="@+id/nav_about"
-        android:name="com.example.vinilos.ui.slideshow.SlideshowFragment"
+        android:name="com.example.vinilos.ui.collectors.CollectorFragment"
         android:label="@string/menu_about"
         tools:layout="@layout/fragment_slideshow" />
 
