@@ -22,22 +22,22 @@
     </fragment>
 
     <fragment
-        android:id="@+id/nav_gallery"
+        android:id="@+id/nav_artist"
         android:name="com.example.vinilos.ui.performers.PerformerFragment"
         android:label="@string/menu_artist"
-        tools:layout="@layout/fragment_gallery" />
+        tools:layout="@layout/fragment_performers" />
 
     <fragment
-        android:id="@+id/nav_slideshow"
+        android:id="@+id/nav_collector"
         android:name="com.example.vinilos.ui.collectors.CollectorFragment"
         android:label="@string/menu_collector"
-        tools:layout="@layout/fragment_slideshow" />
+        tools:layout="@layout/fragment_collectors" />
 
     <fragment
         android:id="@+id/nav_about"
         android:name="com.example.vinilos.ui.collectors.CollectorFragment"
         android:label="@string/menu_about"
-        tools:layout="@layout/fragment_slideshow" />
+        tools:layout="@layout/fragment_collectors" />
 
     <fragment
         android:id="@+id/nav_create_album"

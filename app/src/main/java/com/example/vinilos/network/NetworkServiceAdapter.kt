@@ -10,6 +10,7 @@ import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.vinilos.models.Album
 import kotlinx.coroutines.delay
+import com.example.vinilos.models.Performer
 import org.json.JSONArray
 import org.json.JSONObject
 import kotlin.coroutines.resume
@@ -59,6 +60,21 @@ class NetworkServiceAdapter constructor(context: Context) {
             }))
     }
 
+    suspend fun getPerformers() = suspendCoroutine<List<Performer>>{ cont ->
+        requestQueue.add(getRequest("musicians",
+            Response.Listener<String> { response ->
+                val resp = JSONArray(response)
+                val list = mutableListOf<Performer>()
+                for (i in 0 until resp.length()) {
+                    val item = resp.getJSONObject(i)
+                    list.add(i, Performer(performerId = item.getInt("id"),name = item.getString("name"), image = item.getString("image"), description = item.getString("description"), birthDate = item.getString("birthDate")))
+                }
+                cont.resume(list)
+            },
+            Response.ErrorListener {
+                cont.resumeWithException(it)
+            }))
+    }
 
     private fun getRequest(path:String, responseListener: Response.Listener<String>, errorListener: Response.ErrorListener): StringRequest {
         return StringRequest(Request.Method.GET, BASE_URL+path, responseListener,errorListener)

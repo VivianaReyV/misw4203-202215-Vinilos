@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/performers"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.performers.PerformerFragment"
+    android:layout_marginStart="16dp"
+    android:layout_marginEnd="16dp">
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/performersRv"
+        android:layout_width="match_parent"
+        android:layout_height="667dp"
+        android:layout_marginTop="130px"
+        tools:listitem="@layout/performer_item"
+        />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/roll_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom"
+        android:src="@drawable/plus_icon"
+        android:layout_marginBottom="16dp"
+        android:layout_marginRight="5dp"
+        android:backgroundTint="@color/green_home"/>
+
+</FrameLayout>

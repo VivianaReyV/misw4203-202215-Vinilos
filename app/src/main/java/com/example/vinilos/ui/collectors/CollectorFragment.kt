@@ -7,12 +7,12 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.example.vinilos.databinding.FragmentSlideshowBinding
-import com.example.vinilos.viewmodels.SlideshowViewModel
+import com.example.vinilos.databinding.FragmentCollectorsBinding
+import com.example.vinilos.viewmodels.CollectorViewModel
 
 class CollectorFragment : Fragment() {
 
-    private var _binding: FragmentSlideshowBinding? = null
+    private var _binding: FragmentCollectorsBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -23,14 +23,14 @@ class CollectorFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val slideshowViewModel =
-            ViewModelProvider(this).get(SlideshowViewModel::class.java)
+        val collectorViewModel =
+            ViewModelProvider(this).get(CollectorViewModel::class.java)
 
-        _binding = FragmentSlideshowBinding.inflate(inflater, container, false)
+        _binding = FragmentCollectorsBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
         val textView: TextView = binding.textSlideshow
-        slideshowViewModel.text.observe(viewLifecycleOwner) {
+        collectorViewModel.text.observe(viewLifecycleOwner) {
             textView.text = it
         }
         return root
