@@ -1,14 +1,14 @@
 package com.example.vinilos.viewmodels
 
 import android.app.Application
-import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
+import android.util.Log
+import androidx.lifecycle.*
 import com.example.vinilos.models.Album
 import com.example.vinilos.repositories.AlbumRepository
 import com.google.gson.Gson
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import org.json.JSONObject
 
 class AlbumViewModel (application: Application) : AndroidViewModel(application) {
@@ -50,27 +50,35 @@ class AlbumViewModel (application: Application) : AndroidViewModel(application) 
          refreshDataFromNetwork()
     }
     private fun refreshDataFromNetwork() {
-        albumsRepository.refreshData({
-            _albums.postValue(it)
-            _eventNetworkError.value = false
-            _isNetworkErrorShown.value = false
-        },{
+        try {
+            viewModelScope.launch(Dispatchers.Default) {
+                withContext(Dispatchers.IO) {
+                    var data = albumsRepository.refreshData()
+                    _albums.postValue(data)
+                }
+                _eventNetworkError.postValue(false)
+                _isNetworkErrorShown.postValue(false)
+            }
+        }
+        catch (e:Exception){
+            Log.d("Error", e.toString())
             _eventNetworkError.value = true
-        })
+        }
     }
 
     fun createAlbum(albumToCreate: Album) {
-        albumsRepository.createAlbum(albumToCreate,
-            {
-                _eventNetworkError.value = false
-                _isNetworkErrorShown.value = false
-                _eventCreateAlbumSuccess.value = true
-            },{
-                _eventNetworkError.value = true
-                _eventCreateAlbumSuccess.value = false
-                _isCreateAlbumSuccessShown.value = false
+        try{
+            viewModelScope.launch(Dispatchers.Default)  {
+                albumsRepository.createAlbum(albumToCreate)
+                _eventNetworkError.postValue(false)
+                _isNetworkErrorShown.postValue(false)
+                _eventCreateAlbumSuccess.postValue(true)
             }
-        )
+        }
+        catch (e:Exception){
+            Log.d("Error", e.toString())
+            _eventNetworkError.value = true
+        }
     }
 
     fun onNetworkErrorShown() {
