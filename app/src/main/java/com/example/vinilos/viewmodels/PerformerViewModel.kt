@@ -1,9 +1,13 @@
 package com.example.vinilos.viewmodels
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.*
 import com.example.vinilos.models.Performer
 import com.example.vinilos.repositories.PerformerRepository
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import org.json.JSONObject
 
 class PerformerViewModel (application: Application) : AndroidViewModel(application) {
@@ -36,14 +40,22 @@ class PerformerViewModel (application: Application) : AndroidViewModel(applicati
     init {
         refreshDataFromNetwork()
     }
+
     private fun refreshDataFromNetwork() {
-        performersRepository.refreshData({
-            _performers.postValue(it)
-            _eventNetworkError.value = false
-            _isNetworkErrorShown.value = false
-        },{
+        try {
+            viewModelScope.launch(Dispatchers.Default) {
+                withContext(Dispatchers.IO) {
+                    var data = performersRepository.refreshData()
+                    _performers.postValue(data)
+                }
+                _eventNetworkError.postValue(false)
+                _isNetworkErrorShown.postValue(false)
+            }
+        }
+        catch (e:Exception){
+            Log.d("Error", e.toString())
             _eventNetworkError.value = true
-        })
+        }
     }
 
     fun onNetworkErrorShown() {
