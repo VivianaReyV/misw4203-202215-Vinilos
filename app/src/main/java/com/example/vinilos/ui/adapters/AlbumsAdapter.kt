@@ -62,7 +62,6 @@ class AlbumsAdapter : RecyclerView.Adapter<AlbumsAdapter.AlbumViewHolder>(){
         try {
             Glide.with(imgView).load(url).error(R.drawable.coverdefault).into(imgView)
         }catch (e : Exception){
-            println("errorsito")
             //sendError(e,"loadUrl", url)
         }
 

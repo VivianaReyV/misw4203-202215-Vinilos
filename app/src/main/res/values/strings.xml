@@ -25,4 +25,5 @@
     <string name="genero">Genero</string>
     <string name="hint_date_format">aaaa-mm-dd</string>
     <string name="hint_cover_url">https://mi-portada.com</string>
+    <string name="title_performers">Artistas</string>
 </resources>
