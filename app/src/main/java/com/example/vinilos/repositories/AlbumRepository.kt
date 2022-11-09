@@ -5,25 +5,18 @@ import com.android.volley.VolleyError
 import com.example.vinilos.models.Album
 import com.example.vinilos.network.NetworkServiceAdapter
 import com.google.gson.Gson
+import kotlinx.coroutines.delay
 import org.json.JSONObject
 
 class AlbumRepository (val application: Application){
-    fun refreshData(onSuccess: (List<Album>)->Unit, onError: (error: VolleyError)->Unit) {
-        NetworkServiceAdapter.getInstance(application).getAlbums({
-            onSuccess(it)
-        },
-            onError
-        )
+    suspend fun refreshData(): List<Album> {
+        return NetworkServiceAdapter.getInstance(application).getAlbums()
     }
 
-    fun createAlbum(albumToCreate: Album, onSuccess:(resp:JSONObject)->Unit, onError: (error: VolleyError)->Unit){
+    suspend fun createAlbum(albumToCreate: Album){
         val gson = Gson()
         val jsonBody = gson.toJson(albumToCreate)
         val jsonObject = JSONObject(jsonBody)
-        NetworkServiceAdapter.getInstance(application).postAlbum(jsonObject, {
-            onSuccess(it)
-        },{
-            onError
-        })
+        NetworkServiceAdapter.getInstance(application).postAlbum(jsonObject)
     }
 }
