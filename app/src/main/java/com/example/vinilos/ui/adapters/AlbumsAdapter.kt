@@ -7,13 +7,17 @@ import android.widget.Button
 import android.widget.ImageView
 import androidx.annotation.LayoutRes
 import androidx.core.content.ContextCompat.startActivity
+import androidx.core.os.bundleOf
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.vinilos.R
 import com.example.vinilos.databinding.AlbumItemBinding
 import com.example.vinilos.models.Album
+//import com.example.vinilos.ui.album.AlbumFragmentDirections
+
 // import com.example.vinilos.ui.AlbumFragmentDirections
 
 class AlbumsAdapter : RecyclerView.Adapter<AlbumsAdapter.AlbumViewHolder>(){
@@ -39,9 +43,8 @@ class AlbumsAdapter : RecyclerView.Adapter<AlbumsAdapter.AlbumViewHolder>(){
         }
         loadUrl(albums[position].cover,holder.viewDataBinding.cover)
         holder.viewDataBinding.root.setOnClickListener {
-            // val action = AlbumFragmentDirections.actionAlbumFragmentToCommentFragment(albums[position].albumId)
-            // Navigate using that action
-            // holder.viewDataBinding.root.findNavController().navigate(action)
+            val bundle = bundleOf("albumId" to albums[position].albumId.toString().trim())
+            Navigation.findNavController(holder.itemView).navigate(R.id.action_nav_album_to_nav_detail_album, bundle);
         }
     }
 
