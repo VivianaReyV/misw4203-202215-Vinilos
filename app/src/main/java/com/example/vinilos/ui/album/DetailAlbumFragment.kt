@@ -41,7 +41,8 @@ class DetailAlbumFragment: Fragment() {
                     binding.txtAlbumName.text = album.name
                     binding.txtReleaseDate.text = "Fecha de lanzamiento (${(album.releaseDate).slice(0 until 10)})"
                     binding.txtDescription.text = album.description
-                    binding.txtRecordLabel.text = album.recordLabel
+                    binding.txtAlbumGender.text = "Género: ${album.genre}  |  Discografía: ${album.recordLabel}"
+                    //binding.txtRecordLabel.text = "Discografía: ${album.recordLabel}"
                     binding.mainContainer.visibility = View.VISIBLE
                     binding.progressBar.visibility = View.GONE
                 }

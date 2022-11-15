@@ -28,4 +28,7 @@
     <string name="hint_cover_url">https://mi-portada.com</string>
     <string name="title_performers">Artistas</string>
     <string name="label_songs">Canciones</string>
+    <string name="label_albums">Álbumes</string>
+    <string name="detail_performer">Detalle Artista</string>
+    <string name="label_performer_name"><b>Performer Name</b></string>
 </resources>

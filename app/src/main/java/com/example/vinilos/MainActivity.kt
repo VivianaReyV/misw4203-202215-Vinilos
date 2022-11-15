@@ -1,8 +1,8 @@
 package com.example.vinilos
 
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
-import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.navigation.NavigationView
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -12,6 +12,7 @@ import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
 import com.example.vinilos.databinding.ActivityMainBinding
+import kotlinx.coroutines.CoroutineExceptionHandler
 
 class MainActivity : AppCompatActivity() {
 
@@ -37,11 +38,16 @@ class MainActivity : AppCompatActivity() {
         // menu should be considered as top level destinations.
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.nav_home, R.id.nav_artist, R.id.nav_collector, R.id.nav_album
+                R.id.nav_home, R.id.nav_performer, R.id.nav_collector, R.id.nav_album
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+
+        val exceptionHandler = CoroutineExceptionHandler { _, exception ->
+            println("Caught $exception")
+            Log.e("Caught: ", "$exception")
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

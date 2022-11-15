@@ -27,7 +27,7 @@ class PerformersListTest {
             .check(ViewAssertions.matches(isDisplayed()))
         onView(withContentDescription(R.string.navigation_drawer_open))
             .perform(ViewActions.click())
-        onView(withId(R.id.nav_artist))
+        onView(withId(R.id.nav_performer))
             .check(ViewAssertions.matches(isDisplayed()))
     }
 
@@ -37,7 +37,7 @@ class PerformersListTest {
             .check(ViewAssertions.matches(isDisplayed()))
         onView(withContentDescription(R.string.navigation_drawer_open))
             .perform(ViewActions.click())
-        onView(withId(R.id.nav_artist))
+        onView(withId(R.id.nav_performer))
             .perform(ViewActions.click())
         onView(withId(R.id.performers))
             .check(ViewAssertions.matches(isDisplayed()))
@@ -49,7 +49,7 @@ class PerformersListTest {
             .check(ViewAssertions.matches(isDisplayed()))
         onView(withContentDescription(R.string.navigation_drawer_open))
             .perform(ViewActions.click())
-        onView(withId(R.id.nav_artist))
+        onView(withId(R.id.nav_performer))
             .check(ViewAssertions.matches(isDisplayed()))
             .perform(ViewActions.click())
         onView(withId(R.id.roll_button))

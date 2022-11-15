@@ -25,7 +25,7 @@
     </fragment>
 
     <fragment
-        android:id="@+id/nav_artist"
+        android:id="@+id/nav_performer"
         android:name="com.example.vinilos.ui.performers.PerformerFragment"
         android:label="@string/menu_artist"
         tools:layout="@layout/fragment_performers" />
@@ -55,6 +55,15 @@
         tools:layout="@layout/fragment_detail_album" >
         <argument
             android:name="albumId"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_detail_performer"
+        android:name="com.example.vinilos.ui.performers.DetailPerformerFragment"
+        android:label="@string/detail_performer"
+        tools:layout="@layout/fragment_detail_performer" >
+        <argument
+            android:name="performerId"
             app:argType="string" />
     </fragment>
 </navigation>
