@@ -15,7 +15,7 @@
             android:icon="@drawable/album"
             android:title="@string/menu_album" />
         <item
-            android:id="@+id/nav_artist"
+            android:id="@+id/nav_performer"
             android:icon="@drawable/microphone_icon"
             android:title="@string/menu_artist" />
         <item

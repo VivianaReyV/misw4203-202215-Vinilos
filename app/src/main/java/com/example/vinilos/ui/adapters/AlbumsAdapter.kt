@@ -44,7 +44,7 @@ class AlbumsAdapter : RecyclerView.Adapter<AlbumsAdapter.AlbumViewHolder>(){
         loadUrl(albums[position].cover,holder.viewDataBinding.cover)
         holder.viewDataBinding.root.setOnClickListener {
             val bundle = bundleOf("albumId" to albums[position].albumId.toString().trim())
-            Navigation.findNavController(holder.itemView).navigate(R.id.action_nav_album_to_nav_detail_album, bundle);
+            Navigation.findNavController(holder.itemView).navigate(R.id.nav_detail_album, bundle);
         }
     }
 

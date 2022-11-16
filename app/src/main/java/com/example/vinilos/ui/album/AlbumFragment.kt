@@ -68,7 +68,10 @@ class AlbumFragment : Fragment() {
             }
         })
         viewModel.eventNetworkError.observe(viewLifecycleOwner, Observer<Boolean> { isNetworkError ->
-            if (isNetworkError) onNetworkError()
+            if (isNetworkError){
+                onNetworkError()
+                binding.progressBar.visibility = View.INVISIBLE
+            }
         })
 
     }
@@ -80,12 +83,12 @@ class AlbumFragment : Fragment() {
 
     private fun onNetworkError() {
         if(!viewModel.isNetworkErrorShown.value!!) {
-            Toast.makeText(activity, "Network Error", Toast.LENGTH_LONG).show()
+            Toast.makeText(this.context, "Network Error", Toast.LENGTH_LONG).show()
             viewModel.onNetworkErrorShown()
         }
     }
 
     fun clickButton(view: View){
-        Navigation.findNavController(view).navigate(R.id.action_nav_album_to_nav_create_album);
+        Navigation.findNavController(view).navigate(R.id.createAlbum);
     }
 }

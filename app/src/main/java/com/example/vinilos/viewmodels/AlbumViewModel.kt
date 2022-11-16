@@ -6,12 +6,10 @@ import androidx.lifecycle.*
 import com.example.vinilos.models.Album
 import com.example.vinilos.repositories.AlbumRepository
 import com.google.gson.Gson
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import kotlinx.coroutines.*
 import org.json.JSONObject
 
-class AlbumViewModel (application: Application) : AndroidViewModel(application) {
+class AlbumViewModel(application: Application) : AndroidViewModel(application) {
 
     private val albumsRepository = AlbumRepository(application)
     private val _text = MutableLiveData<String>().apply {
@@ -45,39 +43,42 @@ class AlbumViewModel (application: Application) : AndroidViewModel(application) 
 
     val isCreateAlbumSuccessShown: LiveData<Boolean>
         get() = _isCreateAlbumSuccessShown
+    private val viewModelJob = SupervisorJob()
+    private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
+
 
     init {
-         refreshDataFromNetwork()
+        refreshDataFromNetwork()
     }
+
     private fun refreshDataFromNetwork() {
-        try {
-            viewModelScope.launch(Dispatchers.Default) {
-                withContext(Dispatchers.IO) {
-                    var data = albumsRepository.refreshData()
-                    _albums.postValue(data)
-                }
+        uiScope.launch {
+            try {
+                var data = albumsRepository.refreshData()
+                _albums.postValue(data)
+                //}
                 _eventNetworkError.postValue(false)
                 _isNetworkErrorShown.postValue(false)
+            } catch (e: Exception) {
+                Log.d("Error", e.toString())
+                _eventNetworkError.value = true
             }
         }
-        catch (e:Exception){
-            Log.d("Error", e.toString())
-            _eventNetworkError.value = true
-        }
+
+
     }
 
     fun createAlbum(albumToCreate: Album) {
-        try{
-            viewModelScope.launch(Dispatchers.Default)  {
+        uiScope.launch {
+            try {
                 albumsRepository.createAlbum(albumToCreate)
                 _eventNetworkError.postValue(false)
                 _isNetworkErrorShown.postValue(false)
                 _eventCreateAlbumSuccess.postValue(true)
+            } catch (e: Exception) {
+                Log.d("Error", e.toString())
+                _eventNetworkError.value = true
             }
-        }
-        catch (e:Exception){
-            Log.d("Error", e.toString())
-            _eventNetworkError.value = true
         }
     }
 
@@ -99,5 +100,6 @@ class AlbumViewModel (application: Application) : AndroidViewModel(application) 
             throw IllegalArgumentException("Unable to construct viewmodel")
         }
     }
+
     val text: LiveData<String> = _text
 }

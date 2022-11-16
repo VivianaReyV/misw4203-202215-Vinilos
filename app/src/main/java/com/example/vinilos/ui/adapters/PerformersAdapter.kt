@@ -4,7 +4,9 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.annotation.LayoutRes
+import androidx.core.os.bundleOf
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.vinilos.R
@@ -34,6 +36,8 @@ class PerformersAdapter : RecyclerView.Adapter<PerformersAdapter.PerformerViewHo
         }
         loadUrl(performers[position].image,holder.viewDataBinding.cover)
         holder.viewDataBinding.root.setOnClickListener {
+            val bundle = bundleOf("performerId" to performers[position].performerId.toString().trim())
+            Navigation.findNavController(holder.itemView).navigate(R.id.nav_detail_performer, bundle);
         }
     }
 
