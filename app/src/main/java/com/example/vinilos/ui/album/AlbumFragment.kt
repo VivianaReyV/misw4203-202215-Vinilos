@@ -89,6 +89,10 @@ class AlbumFragment : Fragment() {
     }
 
     fun clickButton(view: View){
-        Navigation.findNavController(view).navigate(R.id.nav_create_album);
+        try{
+            Navigation.findNavController(view).navigate(R.id.nav_create_album);
+        }catch(err: Exception){
+            println(err)
+        }
     }
 }
