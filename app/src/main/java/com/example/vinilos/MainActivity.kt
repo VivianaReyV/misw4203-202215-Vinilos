@@ -45,8 +45,7 @@ class MainActivity : AppCompatActivity() {
         navView.setupWithNavController(navController)
 
         val exceptionHandler = CoroutineExceptionHandler { _, exception ->
-            println("Caught $exception")
-            Log.e("Caught: ", "$exception")
+
         }
     }
 

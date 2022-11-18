@@ -1,7 +1,6 @@
 package com.example.vinilos.viewmodels
 
 import android.app.Application
-import android.util.Log
 import androidx.lifecycle.*
 import com.example.vinilos.models.Performer
 import com.example.vinilos.repositories.PerformerRepository
@@ -53,7 +52,6 @@ class PerformerViewModel (application: Application) : AndroidViewModel(applicati
             }
         }
         catch (e:Exception){
-            Log.d("Error", e.toString())
             _eventNetworkError.value = true
         }
     }

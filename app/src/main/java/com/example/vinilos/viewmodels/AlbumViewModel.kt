@@ -59,7 +59,6 @@ class AlbumViewModel(application: Application) : AndroidViewModel(application) {
                 _eventNetworkError.postValue(false)
                 _isNetworkErrorShown.postValue(false)
             } catch (e: Exception) {
-                Log.d("Error", e.toString())
                 _eventNetworkError.value = true
             }
         }
@@ -75,7 +74,6 @@ class AlbumViewModel(application: Application) : AndroidViewModel(application) {
                 _isNetworkErrorShown.postValue(false)
                 _eventCreateAlbumSuccess.postValue(true)
             } catch (e: Exception) {
-                Log.d("Error", e.toString())
                 _eventNetworkError.value = true
             }
         }
