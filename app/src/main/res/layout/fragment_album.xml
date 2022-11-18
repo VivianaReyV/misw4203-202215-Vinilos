@@ -20,7 +20,7 @@
         android:id="@+id/albumsRv"
         android:layout_width="match_parent"
         android:layout_height="667dp"
-        android:layout_marginTop="130px"
+        android:layout_marginTop="35dp"
         tools:listitem="@layout/album_item"
         />
 
@@ -31,7 +31,8 @@
         android:layout_gravity="end|bottom"
         android:src="@drawable/plus_icon"
         android:layout_marginBottom="16dp"
-        android:layout_marginRight="5dp"
+        android:layout_marginEnd="5dp"
+        android:contentDescription="@string/crearAlbum"
         android:backgroundTint="@color/green_home"/>
 
 </FrameLayout>

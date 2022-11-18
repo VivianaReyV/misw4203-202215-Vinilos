@@ -12,7 +12,7 @@
         android:padding="10dp">
         <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:orientation="vertical">
             <ProgressBar
@@ -34,7 +34,7 @@
                     android:id="@+id/txtPerformerName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="25dp"
+                    android:textSize="25sp"
                     android:textStyle="bold"
                     android:text=""
                     android:textAlignment="center"/>
@@ -42,10 +42,10 @@
                     android:id="@+id/cover"
                     android:layout_width="297dp"
                     android:layout_height="225dp"
-                    android:layout_marginTop="80px"
-                    android:layout_marginBottom="40px"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginBottom="10dp"
                     android:scaleType="fitCenter"
-
+                    android:contentDescription="@string/performer_cover"
                     android:layout_gravity="center_horizontal"
                     android:src="@drawable/artist_cover" />
                 <TextView
@@ -53,7 +53,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="15dp"
-                    android:textSize="18dp"
+                    android:textSize="18sp"
                     android:textDirection="firstStrong"
                     android:text="@string/label_performer_name"
                     android:justificationMode="inter_word"

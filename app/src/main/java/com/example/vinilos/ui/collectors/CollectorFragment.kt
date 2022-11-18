@@ -24,7 +24,7 @@ class CollectorFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         val collectorViewModel =
-            ViewModelProvider(this).get(CollectorViewModel::class.java)
+            ViewModelProvider(this)[CollectorViewModel::class.java]
 
         _binding = FragmentCollectorsBinding.inflate(inflater, container, false)
         val root: View = binding.root

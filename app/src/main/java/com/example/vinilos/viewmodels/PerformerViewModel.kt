@@ -27,12 +27,12 @@ class PerformerViewModel (application: Application) : AndroidViewModel(applicati
     val performer: LiveData<JSONObject>
         get() = _performer
 
-    private var _eventNetworkError = MutableLiveData<Boolean>(false)
+    private var _eventNetworkError = MutableLiveData(false)
 
     val eventNetworkError: LiveData<Boolean>
         get() = _eventNetworkError
 
-    private var _isNetworkErrorShown = MutableLiveData<Boolean>(false)
+    private var _isNetworkErrorShown = MutableLiveData(false)
 
     val isNetworkErrorShown: LiveData<Boolean>
         get() = _isNetworkErrorShown
@@ -45,7 +45,7 @@ class PerformerViewModel (application: Application) : AndroidViewModel(applicati
         try {
             viewModelScope.launch(Dispatchers.Default) {
                 withContext(Dispatchers.IO) {
-                    var data = performersRepository.refreshData()
+                    val data = performersRepository.refreshData()
                     _performers.postValue(data)
                 }
                 _eventNetworkError.postValue(false)

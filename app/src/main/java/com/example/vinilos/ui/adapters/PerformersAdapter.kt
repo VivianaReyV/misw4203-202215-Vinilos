@@ -38,7 +38,7 @@ class PerformersAdapter : RecyclerView.Adapter<PerformersAdapter.PerformerViewHo
         loadUrl(performers[position].image,holder.viewDataBinding.cover)
         holder.viewDataBinding.root.setOnClickListener {
             val bundle = bundleOf("performerId" to performers[position].performerId.toString().trim())
-            Navigation.findNavController(holder.itemView).navigate(R.id.nav_detail_performer, bundle);
+            Navigation.findNavController(holder.itemView).navigate(R.id.nav_detail_performer, bundle)
         }
     }
 
