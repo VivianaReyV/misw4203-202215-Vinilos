@@ -32,7 +32,6 @@
         android:src="@drawable/plus_icon"
         android:layout_marginBottom="16dp"
         android:layout_marginRight="5dp"
-        android:backgroundTint="@color/green_home"
-        android:onClick="crearAlbum"/>
+        android:backgroundTint="@color/green_home"/>
 
 </FrameLayout>

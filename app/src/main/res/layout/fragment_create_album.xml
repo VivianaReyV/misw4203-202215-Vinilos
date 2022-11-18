@@ -168,7 +168,6 @@
             android:padding="15dp"
             android:layout_gravity="center"
             android:layout_marginTop="40dp"
-            android:onClick="crearNuevoAlbum"
             android:text="Crear Álbum"
             />
     </LinearLayout>
