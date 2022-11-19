@@ -1,7 +1,6 @@
 package com.example.vinilos.viewmodels
 
 import android.app.Application
-import android.util.Log
 import androidx.lifecycle.*
 import com.example.vinilos.models.Performer
 import com.example.vinilos.repositories.PerformerRepository
@@ -27,12 +26,12 @@ class PerformerViewModel (application: Application) : AndroidViewModel(applicati
     val performer: LiveData<JSONObject>
         get() = _performer
 
-    private var _eventNetworkError = MutableLiveData<Boolean>(false)
+    private var _eventNetworkError = MutableLiveData(false)
 
     val eventNetworkError: LiveData<Boolean>
         get() = _eventNetworkError
 
-    private var _isNetworkErrorShown = MutableLiveData<Boolean>(false)
+    private var _isNetworkErrorShown = MutableLiveData(false)
 
     val isNetworkErrorShown: LiveData<Boolean>
         get() = _isNetworkErrorShown
@@ -45,7 +44,7 @@ class PerformerViewModel (application: Application) : AndroidViewModel(applicati
         try {
             viewModelScope.launch(Dispatchers.Default) {
                 withContext(Dispatchers.IO) {
-                    var data = performersRepository.refreshData()
+                    val data = performersRepository.refreshData()
                     _performers.postValue(data)
                 }
                 _eventNetworkError.postValue(false)
@@ -53,7 +52,6 @@ class PerformerViewModel (application: Application) : AndroidViewModel(applicati
             }
         }
         catch (e:Exception){
-            Log.d("Error", e.toString())
             _eventNetworkError.value = true
         }
     }

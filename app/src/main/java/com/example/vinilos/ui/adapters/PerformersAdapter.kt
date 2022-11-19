@@ -9,6 +9,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.vinilos.R
 import com.example.vinilos.databinding.PerformerItemBinding
 import com.example.vinilos.models.Performer
@@ -37,14 +38,13 @@ class PerformersAdapter : RecyclerView.Adapter<PerformersAdapter.PerformerViewHo
         loadUrl(performers[position].image,holder.viewDataBinding.cover)
         holder.viewDataBinding.root.setOnClickListener {
             val bundle = bundleOf("performerId" to performers[position].performerId.toString().trim())
-            Navigation.findNavController(holder.itemView).navigate(R.id.nav_detail_performer, bundle);
+            Navigation.findNavController(holder.itemView).navigate(R.id.nav_detail_performer, bundle)
         }
     }
 
     override fun getItemCount(): Int {
         return performers.size
     }
-
 
     class PerformerViewHolder(val viewDataBinding: PerformerItemBinding) :
         RecyclerView.ViewHolder(viewDataBinding.root) {
@@ -56,9 +56,9 @@ class PerformersAdapter : RecyclerView.Adapter<PerformersAdapter.PerformerViewHo
 
     fun loadUrl(url: String, imgView : ImageView) {
         try {
-            Glide.with(imgView).load(url).error(R.drawable.artist_cover).into(imgView)
+            Glide.with(imgView).load(url).diskCacheStrategy(DiskCacheStrategy.ALL).error(R.drawable.artist_cover).into(imgView)
         }catch (e : Exception){
-            //sendError(e,"loadUrl", url)
+
         }
 
     }

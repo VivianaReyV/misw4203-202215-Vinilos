@@ -1,21 +1,15 @@
 <resources>
     <string name="app_name">Vinilos</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Android Studio</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
-    <string name="action_settings">Settings</string>
     <string name="title_albums">Albums</string>
     <string name="add_album">Agregar Album</string>
     <string name="detail_album">Detalle Album</string>
     <string name="menu_album">Álbumes</string>
     <string name="menu_home">Home</string>
-    <string name="menu_gallery">Gallery</string>
     <string name="menu_artist">Artistas</string>
     <string name="menu_collector">Coleccionistas</string>
     <string name="menu_about">Acerca de</string>
-    <string name="menu_slideshow">Slideshow</string>
     <string name="menu_app_name">Vinilos App</string>
     <string name="nombre">Nombre</string>
     <string name="fecha_lanzamiento">Fecha de lanzamiento (Año-Mes-Día)</string>
@@ -27,8 +21,9 @@
     <string name="hint_date_format">aaaa-mm-dd</string>
     <string name="hint_cover_url">https://mi-portada.com</string>
     <string name="title_performers">Artistas</string>
-    <string name="label_songs">Canciones</string>
-    <string name="label_albums">Álbumes</string>
     <string name="detail_performer">Detalle Artista</string>
     <string name="label_performer_name"><b>Performer Name</b></string>
+    <string name="album_cover">Album cover</string>
+    <string name="performer_cover">Performer cover</string>
+    <string name="crearArtista">Crear artista</string>
 </resources>

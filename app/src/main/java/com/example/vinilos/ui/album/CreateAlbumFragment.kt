@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.vinilos.databinding.FragmentCreateAlbumBinding
 import com.example.vinilos.models.Album
@@ -30,11 +29,10 @@ class CreateAlbumFragment: Fragment() {
         savedInstanceState: Bundle?
     ): View {
         viewModel =
-            ViewModelProvider(this).get(AlbumViewModel::class.java)
+            ViewModelProvider(this)[AlbumViewModel::class.java]
 
         _binding = FragmentCreateAlbumBinding.inflate(inflater, container, false)
-        val root: View = binding.root
-        return root
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -72,7 +70,7 @@ class CreateAlbumFragment: Fragment() {
                 R.layout.simple_spinner_item,
                 recordlabelItems
             ).also { adapter ->
-                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                adapter.setDropDownViewResource(R.layout.simple_spinner_dropdown_item)
                 binding.spinnerRecordLabel.adapter = adapter
             }
         }
@@ -85,12 +83,12 @@ class CreateAlbumFragment: Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel.eventCreateAlbumSuccess.observe(viewLifecycleOwner, Observer<Boolean> { successAlbumCreated ->
+        viewModel.eventCreateAlbumSuccess.observe(viewLifecycleOwner) { successAlbumCreated ->
             if (successAlbumCreated) onSuccessAlbumCreated()
-        })
-        viewModel.eventNetworkError.observe(viewLifecycleOwner, Observer<Boolean> { isNetworkError ->
+        }
+        viewModel.eventNetworkError.observe(viewLifecycleOwner) { isNetworkError ->
             if (isNetworkError) onNetworkError()
-        })
+        }
     }
 
     private fun createAlbum(view: View){

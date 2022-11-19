@@ -1,17 +1,14 @@
 package com.example.vinilos.ui.album
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.vinilos.databinding.FragmentDetailAlbumBinding
-import com.example.vinilos.models.Album
 import com.example.vinilos.ui.adapters.AlbumsAdapter
 import com.example.vinilos.viewmodels.AlbumViewModel
-import kotlinx.android.synthetic.main.fragment_album.*
 
 class DetailAlbumFragment: Fragment() {
     private var _binding: FragmentDetailAlbumBinding? = null
@@ -27,7 +24,7 @@ class DetailAlbumFragment: Fragment() {
         val activity = requireNotNull(this.activity) {
             "You can only access the viewModel after onActivityCreated()"
         }
-        viewModel = ViewModelProvider(this, AlbumViewModel.Factory(activity.application)).get(AlbumViewModel::class.java)
+        viewModel = ViewModelProvider(this, AlbumViewModel.Factory(activity.application))[AlbumViewModel::class.java]
 
         _binding = FragmentDetailAlbumBinding.inflate(inflater, container, false)
         viewModelAdapter = AlbumsAdapter()

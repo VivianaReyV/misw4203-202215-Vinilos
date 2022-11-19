@@ -24,8 +24,7 @@ class DetailPerformerFragment: Fragment() {
         val activity = requireNotNull(this.activity) {
             "You can only access the viewModel after onActivityCreated()"
         }
-        viewModel = ViewModelProvider(this, PerformerViewModel.Factory(activity.application)).get(
-            PerformerViewModel::class.java)
+        viewModel = ViewModelProvider(this, PerformerViewModel.Factory(activity.application))[PerformerViewModel::class.java]
 
         _binding = FragmentDetailPerformerBinding.inflate(inflater, container, false)
         viewModelAdapter = PerformersAdapter()

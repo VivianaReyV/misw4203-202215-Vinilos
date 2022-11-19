@@ -9,7 +9,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10px">
+        android:layout_marginBottom="10dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -22,6 +22,7 @@
                     android:layout_width="198dp"
                     android:layout_height="150dp"
                     android:scaleType="centerCrop"
+                    android:contentDescription="@string/album_cover"
                     android:src="@drawable/coverdefault"/>
                 <LinearLayout
                     android:layout_width="match_parent"

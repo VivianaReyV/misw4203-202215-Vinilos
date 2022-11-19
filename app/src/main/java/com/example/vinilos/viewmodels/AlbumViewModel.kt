@@ -5,7 +5,6 @@ import android.util.Log
 import androidx.lifecycle.*
 import com.example.vinilos.models.Album
 import com.example.vinilos.repositories.AlbumRepository
-import com.google.gson.Gson
 import kotlinx.coroutines.*
 import org.json.JSONObject
 
@@ -24,22 +23,22 @@ class AlbumViewModel(application: Application) : AndroidViewModel(application) {
     val album: LiveData<JSONObject>
         get() = _album
 
-    private var _eventNetworkError = MutableLiveData<Boolean>(false)
+    private var _eventNetworkError = MutableLiveData(false)
 
     val eventNetworkError: LiveData<Boolean>
         get() = _eventNetworkError
 
-    private var _isNetworkErrorShown = MutableLiveData<Boolean>(false)
+    private var _isNetworkErrorShown = MutableLiveData(false)
 
     val isNetworkErrorShown: LiveData<Boolean>
         get() = _isNetworkErrorShown
 
-    private var _eventCreateAlbumSuccess = MutableLiveData<Boolean>(false)
+    private var _eventCreateAlbumSuccess = MutableLiveData(false)
 
     val eventCreateAlbumSuccess: LiveData<Boolean>
         get() = _eventCreateAlbumSuccess
 
-    private var _isCreateAlbumSuccessShown = MutableLiveData<Boolean>(false)
+    private var _isCreateAlbumSuccessShown = MutableLiveData(false)
 
     val isCreateAlbumSuccessShown: LiveData<Boolean>
         get() = _isCreateAlbumSuccessShown
@@ -54,13 +53,12 @@ class AlbumViewModel(application: Application) : AndroidViewModel(application) {
     private fun refreshDataFromNetwork() {
         uiScope.launch {
             try {
-                var data = albumsRepository.refreshData()
+                val data = albumsRepository.refreshData()
                 _albums.postValue(data)
                 //}
                 _eventNetworkError.postValue(false)
                 _isNetworkErrorShown.postValue(false)
             } catch (e: Exception) {
-                Log.d("Error", e.toString())
                 _eventNetworkError.value = true
             }
         }
@@ -76,7 +74,6 @@ class AlbumViewModel(application: Application) : AndroidViewModel(application) {
                 _isNetworkErrorShown.postValue(false)
                 _eventCreateAlbumSuccess.postValue(true)
             } catch (e: Exception) {
-                Log.d("Error", e.toString())
                 _eventNetworkError.value = true
             }
         }
