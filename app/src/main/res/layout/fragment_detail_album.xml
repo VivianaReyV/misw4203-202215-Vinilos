@@ -54,14 +54,6 @@
                     android:textSize="18sp"
                     android:text=""
                     android:textAlignment="center"/>
-                <!--<TextView
-                    android:id="@+id/txtRecordLabel"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:textSize="18dp"
-                    android:text=""
-                    android:textAlignment="center"/>-->
                 <ImageView
                     android:id="@+id/cover"
                     android:layout_width="297dp"

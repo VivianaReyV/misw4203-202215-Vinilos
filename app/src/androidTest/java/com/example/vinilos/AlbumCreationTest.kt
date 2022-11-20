@@ -50,6 +50,10 @@ class AlbumCreationTest {
         Espresso.onView(ViewMatchers.withId(R.id.cover))
             .perform(ViewActions.click(), ViewActions.typeTextIntoFocusedView("https://i.pinimg.com/564x/aa/5f/ed/aa5fed7fac61cc8f41d1e79db917a7cd.jpg"))
         Espresso.onView(ViewMatchers.isRoot()).perform(ViewActions.closeSoftKeyboard())
+
+        Espresso.onView(ViewMatchers.withId(R.id.scrollCreateAlbum))
+            .perform(ViewActions.swipeUp())
+
         Espresso.onView(ViewMatchers.withId(R.id.createButton))
             .perform(ViewActions.click())
         Espresso.onView(ViewMatchers.withId(R.id.roll_button))
@@ -77,6 +81,10 @@ class AlbumCreationTest {
         Espresso.onView(ViewMatchers.withId(R.id.cover))
             .perform(ViewActions.click(), ViewActions.typeTextIntoFocusedView("https://i.pinimg.com/564x/aa/5f/ed/aa5fed7fac61cc8f41d1e79db917a7cd.jpg"))
         Espresso.onView(ViewMatchers.isRoot()).perform(ViewActions.closeSoftKeyboard())
+
+        Espresso.onView(ViewMatchers.withId(R.id.scrollCreateAlbum))
+            .perform(ViewActions.swipeUp())
+
         Espresso.onView(ViewMatchers.withId(R.id.createButton))
             .perform(ViewActions.click())
        Espresso.onView(ViewMatchers.withId(R.id.roll_button))
@@ -105,6 +113,9 @@ class AlbumCreationTest {
             .perform(ViewActions.click(), ViewActions.typeTextIntoFocusedView("https://i.pinimg.com/564x/aa/5f/ed/aa5fed7fac61cc8f41d1e79db917a7cd.jpg"))
         Espresso.onView(ViewMatchers.isRoot()).perform(ViewActions.closeSoftKeyboard())
 
+        Espresso.onView(ViewMatchers.withId(R.id.scrollCreateAlbum))
+            .perform(ViewActions.swipeUp())
+
         Espresso.onView(ViewMatchers.withId(R.id.createButton))
             .perform(ViewActions.click())
         Espresso.onView(ViewMatchers.withId(R.id.roll_button))
@@ -132,6 +143,10 @@ class AlbumCreationTest {
         Espresso.onView(ViewMatchers.withId(R.id.cover))
             .perform(ViewActions.click(), ViewActions.typeTextIntoFocusedView("https://i.pinimg.com/564x/aa/5f/ed/aa5fed7fac61cc8f41d1e79db917a7cd.jpg"))
         Espresso.onView(ViewMatchers.isRoot()).perform(ViewActions.closeSoftKeyboard())
+
+        Espresso.onView(ViewMatchers.withId(R.id.scrollCreateAlbum))
+            .perform(ViewActions.swipeUp())
+
         Espresso.onView(ViewMatchers.withId(R.id.createButton))
             .perform(ViewActions.click())
         Espresso.onView(ViewMatchers.withId(R.id.roll_button))
@@ -163,6 +178,10 @@ class AlbumCreationTest {
         Espresso.onView(ViewMatchers.withId(R.id.cover))
             .perform(ViewActions.click(), ViewActions.typeTextIntoFocusedView("https://i.pinimg.com/564x/aa/5f/ed/aa5fed7fac61cc8f41d1e79db917a7cd.jpg"))
         Espresso.onView(ViewMatchers.isRoot()).perform(ViewActions.closeSoftKeyboard())
+
+        Espresso.onView(ViewMatchers.withId(R.id.scrollCreateAlbum))
+            .perform(ViewActions.swipeUp())
+
         Espresso.onView(ViewMatchers.withId(R.id.createButton))
             .perform(ViewActions.click())
         Espresso.onView(ViewMatchers.withId(R.id.roll_button))
@@ -190,6 +209,9 @@ class AlbumCreationTest {
         Espresso.onView(ViewMatchers.withId(R.id.descripcion))
             .perform(ViewActions.click(), ViewActions.typeTextIntoFocusedView("Thriller"))
         Espresso.onView(ViewMatchers.isRoot()).perform(ViewActions.closeSoftKeyboard())
+
+        Espresso.onView(ViewMatchers.withId(R.id.scrollCreateAlbum))
+            .perform(ViewActions.swipeUp())
 
         Espresso.onView(ViewMatchers.withId(R.id.createButton))
             .perform(ViewActions.click())
