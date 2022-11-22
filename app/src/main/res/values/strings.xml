@@ -22,8 +22,14 @@
     <string name="hint_cover_url">https://mi-portada.com</string>
     <string name="title_performers">Artistas</string>
     <string name="detail_performer">Detalle Artista</string>
+    <string name="detail_collector">Detalle Coleccionista</string>
     <string name="label_performer_name"><b>Performer Name</b></string>
+    <string name="labelFavoritePerformers"><b>Artistas favoritos</b></string>
     <string name="album_cover">Album cover</string>
     <string name="performer_cover">Performer cover</string>
+    <string name="collector_cover">Collector cover</string>
     <string name="crearArtista">Crear artista</string>
+    <string name="createCollector">Crear coleccionista</string>
+    <string name="favPerformersLabel">Artistas favoritos:</string>
+
 </resources>

@@ -9,6 +9,7 @@ import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.vinilos.models.Album
 import com.example.vinilos.models.Performer
+import com.example.vinilos.models.Collector
 import org.json.JSONArray
 import org.json.JSONObject
 import kotlin.coroutines.resume
@@ -73,6 +74,50 @@ class NetworkServiceAdapter constructor(context: Context) {
                 cont.resumeWithException(it)
             }))
     }
+
+    //region Collectors
+    suspend fun getCollectors() = suspendCoroutine<List<Collector>>{ cont ->
+        requestQueue.add(getRequest("collectors",
+            { response ->
+                val resp = JSONArray(response)
+                val list = mutableListOf<Collector>()
+                var collector: JSONObject? = null
+                for (i in 0 until resp.length()) {
+                    val favPerformers = mutableListOf<Performer>()
+                    collector = resp.getJSONObject(i)
+                    try{
+                        val listFavoritePerformer = collector.getJSONArray("favoritePerformers")
+                        var objFavoritePerformer: JSONObject? = null
+                        for(j in 0 until listFavoritePerformer.length()){
+                            objFavoritePerformer = listFavoritePerformer[j] as JSONObject
+                            favPerformers.add(j, Performer(
+                                performerId = objFavoritePerformer?.getInt("id"),
+                                name = objFavoritePerformer.getString("name"),
+                                image = objFavoritePerformer.getString("image"),
+                                description = objFavoritePerformer.getString("description"),
+                                birthDate = if(objFavoritePerformer.has("birthDate")) objFavoritePerformer.getString("birthDate") else ""
+                            ))
+                        }
+
+                        list.add(i, Collector(
+                            collectorId = collector.getInt("id"),
+                            name = collector.getString("name"),
+                            telephone = collector.getString("telephone"),
+                            email = collector.getString("email"),
+                            favoritePerformers = favPerformers,
+                            favoritePerformer1 = if(listFavoritePerformer.length() > 0) (listFavoritePerformer[0] as JSONObject).getString("name") else "",
+                            favoritePerformer2 = if(listFavoritePerformer.length() > 1) (listFavoritePerformer[1] as JSONObject).getString("name") else "",
+                            favoritePerformer3 = if(listFavoritePerformer.length() > 2) (listFavoritePerformer[2] as JSONObject).getString("name") else ""
+                        ))
+                    }catch(e:Exception){ }
+                }
+                cont.resume(list)
+            },
+            {
+                cont.resumeWithException(it)
+            }))
+    }
+    //endregion
 
     private fun getRequest(path:String, responseListener: Response.Listener<String>, errorListener: Response.ErrorListener): StringRequest {
         return StringRequest(Request.Method.GET, BASE_URL+path, responseListener,errorListener)
