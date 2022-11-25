@@ -31,5 +31,8 @@
     <string name="crearArtista">Crear artista</string>
     <string name="createCollector">Crear coleccionista</string>
     <string name="favPerformersLabel">Artistas favoritos:</string>
+    <string name="telefono">Teléfono</string>
+    <string name="crearColeccionista">Crear Coleccionista</string>
+    <string name="email">Correo electrónico</string>
 
 </resources>

@@ -2,7 +2,7 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
-        <variable name="collector" type="com.example.vinilos.models.Collector"/>
+        <variable name="collector" type="com.example.vinilos.models.CollectorPerformers"/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

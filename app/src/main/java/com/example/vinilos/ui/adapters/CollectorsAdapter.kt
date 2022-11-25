@@ -10,11 +10,11 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.example.vinilos.R
 import com.example.vinilos.databinding.CollectorItemBinding
-import com.example.vinilos.models.Collector
+import com.example.vinilos.models.CollectorPerformers
 
 class CollectorsAdapter : RecyclerView.Adapter<CollectorsAdapter.CollectorViewHolder>(){
 
-    var collectors :List<Collector> = emptyList()
+    var collectors :List<CollectorPerformers> = emptyList()
         set(value) {
             field = value
             notifyDataSetChanged()

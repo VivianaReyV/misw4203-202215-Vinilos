@@ -2,12 +2,12 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/createAlbum"
+    android:id="@+id/createCollector"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/transparent">
     <ScrollView
-        android:id="@+id/scrollCreateAlbum"
+        android:id="@+id/scrollCreateCollector"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content">
     <LinearLayout
@@ -24,7 +24,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginEnd="25dp"
             android:layout_marginBottom="5dp"
-            android:text="@string/crearAlbum"
+            android:text="@string/crearColeccionista"
             android:textColor="@color/dark_green"
             android:textSize="22sp"></TextView>
 
@@ -39,7 +39,7 @@
             android:textColor="@color/dark_green"></TextView>
 
         <EditText
-            android:id="@+id/nombreAlbum"
+            android:id="@+id/nombreColeccionista"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginStart="25dp"
@@ -48,8 +48,8 @@
             android:layout_marginBottom="5dp"
             android:paddingStart="10dp"
             android:paddingEnd="10dp"
-            android:labelFor="@id/nombreAlbum"
-            android:inputType="textCapSentences"
+            android:labelFor="@id/nombreColeccionista"
+            android:inputType="textCapWords"
             android:background="@drawable/background_formulario"></EditText>
 
         <TextView
@@ -59,11 +59,11 @@
             android:layout_marginTop="15dp"
             android:layout_marginEnd="25dp"
             android:layout_marginBottom="5dp"
-            android:text="@string/fecha_lanzamiento"
+            android:text="@string/telefono"
             android:textColor="@color/dark_green"></TextView>
 
         <EditText
-            android:id="@+id/fechaLanzamiento"
+            android:id="@+id/telefono"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginStart="25dp"
@@ -72,8 +72,7 @@
             android:layout_marginBottom="5dp"
             android:paddingStart="10dp"
             android:paddingEnd="10dp"
-            android:hint="@string/hint_date_format"
-            android:inputType="date"
+            android:inputType="phone"
             android:background="@drawable/background_formulario"></EditText>
 
         <TextView
@@ -83,11 +82,11 @@
             android:layout_marginTop="15dp"
             android:layout_marginEnd="25dp"
             android:layout_marginBottom="5dp"
-            android:text="@string/descripcion"
+            android:text="@string/email"
             android:textColor="@color/dark_green"></TextView>
 
         <EditText
-            android:id="@+id/descripcion"
+            android:id="@+id/email"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginStart="25dp"
@@ -96,90 +95,19 @@
             android:layout_marginBottom="5dp"
             android:paddingStart="10dp"
             android:paddingEnd="10dp"
-            android:inputType="textLongMessage"
+            android:inputType="textEmailAddress"
             android:background="@drawable/background_formulario"></EditText>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="25dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginEnd="25dp"
-            android:layout_marginBottom="5dp"
-            android:text="@string/genero"
-            android:textColor="@color/dark_green"></TextView>
-
-        <Spinner
-            android:id="@+id/spinnerGenre"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginStart="25dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="25dp"
-            android:layout_marginBottom="5dp"
-            android:background="@drawable/background_spinner"
-            android:textColor="@color/dark_green"
-            android:overlapAnchor="false"
-            android:spinnerMode="dropdown"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="25dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginEnd="25dp"
-            android:layout_marginBottom="5dp"
-            android:text="@string/discografia"
-            android:textColor="@color/dark_green"></TextView>
-
-        <Spinner
-            android:id="@+id/spinnerRecordLabel"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginStart="25dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="25dp"
-            android:layout_marginBottom="5dp"
-            android:background="@drawable/background_spinner"
-            android:textColor="@color/dark_green"
-            android:overlapAnchor="false"
-            android:spinnerMode="dropdown"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="25dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginEnd="25dp"
-            android:layout_marginBottom="5dp"
-            android:text="@string/portada"
-            android:textColor="@color/dark_green"></TextView>
-
-        <EditText
-            android:id="@+id/cover"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginStart="25dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="25dp"
-            android:layout_marginBottom="5dp"
-            android:background="@drawable/background_formulario"
-            android:paddingStart="10dp"
-            android:paddingEnd="10dp"
-            android:hint="@string/hint_cover_url"
-            android:inputType="text"
-            android:textColor="@color/dark_green"></EditText>
 
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/createButton"
+            android:id="@+id/createCollectorButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="15dp"
             android:layout_gravity="center"
             android:layout_marginTop="40dp"
             android:layout_marginBottom="40dp"
-            android:text="@string/crearAlbum"
+            android:text="@string/crearColeccionista"
             />
     </LinearLayout>
     </ScrollView>

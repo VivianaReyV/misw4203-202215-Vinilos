@@ -9,7 +9,7 @@ import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.vinilos.models.Album
 import com.example.vinilos.models.Performer
-import com.example.vinilos.models.Collector
+import com.example.vinilos.models.CollectorPerformers
 import org.json.JSONArray
 import org.json.JSONObject
 import kotlin.coroutines.resume
@@ -76,11 +76,11 @@ class NetworkServiceAdapter constructor(context: Context) {
     }
 
     //region Collectors
-    suspend fun getCollectors() = suspendCoroutine<List<Collector>>{ cont ->
+    suspend fun getCollectors() = suspendCoroutine<List<CollectorPerformers>>{ cont ->
         requestQueue.add(getRequest("collectors",
             { response ->
                 val resp = JSONArray(response)
-                val list = mutableListOf<Collector>()
+                val list = mutableListOf<CollectorPerformers>()
                 var collector: JSONObject? = null
                 for (i in 0 until resp.length()) {
                     val favPerformers = mutableListOf<Performer>()
@@ -99,7 +99,7 @@ class NetworkServiceAdapter constructor(context: Context) {
                             ))
                         }
 
-                        list.add(i, Collector(
+                        list.add(i, CollectorPerformers(
                             collectorId = collector.getInt("id"),
                             name = collector.getString("name"),
                             telephone = collector.getString("telephone"),
@@ -118,6 +118,17 @@ class NetworkServiceAdapter constructor(context: Context) {
             }))
     }
     //endregion
+
+    suspend fun postCollector(body: JSONObject) = suspendCoroutine<JSONObject>{ cont ->
+        requestQueue.add(postRequest("collectors",
+            body,
+            { response ->
+                cont.resume(response)
+            },
+            {
+                cont.resumeWithException(it)
+            }))
+    }
 
     private fun getRequest(path:String, responseListener: Response.Listener<String>, errorListener: Response.ErrorListener): StringRequest {
         return StringRequest(Request.Method.GET, BASE_URL+path, responseListener,errorListener)
