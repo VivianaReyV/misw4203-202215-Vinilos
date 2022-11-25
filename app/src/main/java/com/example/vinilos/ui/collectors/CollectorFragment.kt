@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.vinilos.R
 import com.example.vinilos.databinding.FragmentCollectorsBinding
 import com.example.vinilos.ui.adapters.CollectorsAdapter
-import com.example.vinilos.viewmodels.CollectorViewModel
+import com.example.vinilos.viewmodels.CollectorPerformerViewModel
 
 class CollectorFragment : Fragment() {
 
@@ -21,7 +21,7 @@ class CollectorFragment : Fragment() {
 
     private val binding get() = _binding!!
     private lateinit var recyclerView: RecyclerView
-    private lateinit var viewModel: CollectorViewModel
+    private lateinit var viewModel: CollectorPerformerViewModel
     private var viewModelAdapter: CollectorsAdapter? = null
 
     override fun onCreateView(
@@ -30,7 +30,7 @@ class CollectorFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         val collectorViewModel =
-            ViewModelProvider(this)[CollectorViewModel::class.java]
+            ViewModelProvider(this)[CollectorPerformerViewModel::class.java]
 
         _binding = FragmentCollectorsBinding.inflate(inflater, container, false)
         val view = binding.root
@@ -51,7 +51,7 @@ class CollectorFragment : Fragment() {
             "You can only access the viewModel after onActivityCreated()"
         }
         activity.actionBar?.title = getString(R.string.title_performers)
-        viewModel = ViewModelProvider(this, CollectorViewModel.Factory(activity.application))[CollectorViewModel::class.java]
+        viewModel = ViewModelProvider(this, CollectorPerformerViewModel.Factory(activity.application))[CollectorPerformerViewModel::class.java]
         viewModel.collectors.observe(viewLifecycleOwner) { it ->
             it.apply {
                 viewModelAdapter!!.collectors = this.sortedByDescending { it.name }

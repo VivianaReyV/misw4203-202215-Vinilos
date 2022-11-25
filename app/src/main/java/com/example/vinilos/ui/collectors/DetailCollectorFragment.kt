@@ -11,12 +11,12 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.vinilos.databinding.FragmentDetailCollectorBinding
 import com.example.vinilos.ui.adapters.CollectorsAdapter
-import com.example.vinilos.viewmodels.CollectorViewModel
+import com.example.vinilos.viewmodels.CollectorPerformerViewModel
 
 class DetailCollectorFragment: Fragment() {
     private var _binding: FragmentDetailCollectorBinding? = null
     private val binding get() = _binding!!
-    private lateinit var viewModel: CollectorViewModel
+    private lateinit var viewModel: CollectorPerformerViewModel
     private var viewModelAdapter: CollectorsAdapter? = null
 
     override fun onCreateView(
@@ -27,7 +27,7 @@ class DetailCollectorFragment: Fragment() {
         val activity = requireNotNull(this.activity) {
             "You can only access the viewModel after onActivityCreated()"
         }
-        viewModel = ViewModelProvider(this, CollectorViewModel.Factory(activity.application))[CollectorViewModel::class.java]
+        viewModel = ViewModelProvider(this, CollectorPerformerViewModel.Factory(activity.application))[CollectorPerformerViewModel::class.java]
 
         _binding = FragmentDetailCollectorBinding.inflate(inflater, container, false)
         viewModelAdapter = CollectorsAdapter()

@@ -1,27 +1,25 @@
 package com.example.vinilos.ui.collectors
 
-import android.R
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.example.vinilos.databinding.FragmentCreateAlbumBinding
-import com.example.vinilos.models.Album
-import com.example.vinilos.viewmodels.AlbumViewModel
+import com.example.vinilos.databinding.FragmentCreateCollectorBinding
+import com.example.vinilos.models.Collector
+import com.example.vinilos.viewmodels.CollectorViewModel
 
 
-class CreateCollectorFragment: Fragment() {
+class  CreateCollectorFragment: Fragment() {
 
-    private var _binding: FragmentCreateAlbumBinding ? = null
+    private var _binding: FragmentCreateCollectorBinding ? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
-    private lateinit var viewModel: AlbumViewModel
+    private lateinit var viewModel: CollectorViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -29,51 +27,14 @@ class CreateCollectorFragment: Fragment() {
         savedInstanceState: Bundle?
     ): View {
         viewModel =
-            ViewModelProvider(this)[AlbumViewModel::class.java]
+            ViewModelProvider(this)[CollectorViewModel::class.java]
 
-        _binding = FragmentCreateAlbumBinding.inflate(inflater, container, false)
+        _binding = FragmentCreateCollectorBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        binding.createButton.setOnClickListener{createAlbum(view)}
-
-        // Set genre items
-        val genreItems: MutableList<String> = ArrayList()
-        genreItems.add("Classical")
-        genreItems.add("Folk")
-        genreItems.add("Rock")
-        genreItems.add("Salsa")
-
-        context?.let { context ->
-            ArrayAdapter(
-                context,
-                R.layout.simple_spinner_item,
-                genreItems
-            ).also { adapter ->
-                adapter.setDropDownViewResource(R.layout.simple_spinner_dropdown_item)
-                binding.spinnerGenre.adapter = adapter
-            }
-        }
-
-        // Set recordlabel items
-        val recordlabelItems: MutableList<String> = ArrayList()
-        recordlabelItems.add("Discos Fuentes")
-        recordlabelItems.add("Elektra")
-        recordlabelItems.add("EMI")
-        recordlabelItems.add("Fania Records")
-        recordlabelItems.add("Sony Music")
-
-        context?.let { context ->
-            ArrayAdapter(
-                context,
-                R.layout.simple_spinner_item,
-                recordlabelItems
-            ).also { adapter ->
-                adapter.setDropDownViewResource(R.layout.simple_spinner_dropdown_item)
-                binding.spinnerRecordLabel.adapter = adapter
-            }
-        }
+        binding.createCollectorButton.setOnClickListener{createCollector(view)}
     }
 
     override fun onDestroyView() {
@@ -83,60 +44,51 @@ class CreateCollectorFragment: Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel.eventCreateAlbumSuccess.observe(viewLifecycleOwner) { successAlbumCreated ->
-            if (successAlbumCreated) onSuccessAlbumCreated()
+        viewModel.eventCreateCollectorSuccess.observe(viewLifecycleOwner) { successCollectorCreated ->
+            if (successCollectorCreated) onSuccessCollectorCreated()
         }
         viewModel.eventNetworkError.observe(viewLifecycleOwner) { isNetworkError ->
             if (isNetworkError) onNetworkError()
         }
     }
 
-    private fun createAlbum(view: View){
+    private fun createCollector(view: View){
 
-        if (binding.nombreAlbum.text.toString() == null || binding.nombreAlbum.text.toString() == "")
+        if (binding.nombreColeccionista.text.toString() == null || binding.nombreColeccionista.text.toString() == "")
         {
             formError("El campo nombre no puede estar vacío")
             return
         }
-        val regex = Regex("^\\d{4}-\\d{2}-\\d{2}$")
-        if (!regex.matches(binding.fechaLanzamiento.text.toString()))
+        if (binding.telefono.text.toString() == null || binding.telefono.text.toString() == "")
         {
-            formError("El campo Fecha de lanzamiento no es válido")
+            formError("El campo teléfono no puede estar vacío")
             return
         }
-        if (binding.descripcion.text.toString() == null || binding.descripcion.text.toString() == "")
+        if (binding.email.text.toString() == null || binding.email.text.toString() == "")
         {
-            formError("El campo Descripción no puede estar vacío")
+            formError("El campo Correo electrónico no puede estar vacío")
             return
         }
-        if (binding.cover.text.toString() == null || binding.cover.text.toString() == "")
-        {
-            formError("El campo Portada no puede estar vacío")
-            return
-        }
-        val albumToCreate = Album(null,
-            binding.nombreAlbum.text.toString(),
-            binding.cover.text.toString(),
-            binding.fechaLanzamiento.text.toString(),
-            binding.descripcion.text.toString(),
-            binding.spinnerGenre.selectedItem.toString(),
-            binding.spinnerRecordLabel.selectedItem.toString()
+        val collectorToCreate = Collector(null,
+            binding.nombreColeccionista.text.toString(),
+            binding.email.text.toString(),
+            binding.telefono.text.toString()
         )
-        viewModel.createAlbum(albumToCreate)
+        viewModel.createCollector(collectorToCreate)
 
     }
 
-    private fun onSuccessAlbumCreated(){
-        if(!viewModel.isCreateAlbumSuccessShown.value!!) {
-            Toast.makeText(activity, "Albúm creado exitosamente", Toast.LENGTH_LONG).show()
-            viewModel.onSuccessAlbumCreatedShown()
+    private fun onSuccessCollectorCreated(){
+        if(!viewModel.isCreateCollectorSuccessShown.value!!) {
+            Toast.makeText(activity, "Coleccionista creado exitosamente", Toast.LENGTH_LONG).show()
+            viewModel.onSuccessCollectorCreatedShown()
             activity?.onBackPressed()
         }
     }
 
     private fun onNetworkError() {
         if (!viewModel.isNetworkErrorShown.value!!) {
-            Toast.makeText(activity, "Error al crear albúm", Toast.LENGTH_LONG).show()
+            Toast.makeText(activity, "Error al crear coleccionista", Toast.LENGTH_LONG).show()
             viewModel.onNetworkErrorShown()
         }
     }
