@@ -18,8 +18,6 @@
     <string name="crearAlbum">Crear Álbum</string>
     <string name="portada">Portada</string>
     <string name="genero">Genero</string>
-    <string name="hint_date_format">aaaa-mm-dd</string>
-    <string name="hint_cover_url">https://mi-portada.com</string>
     <string name="title_performers">Artistas</string>
     <string name="detail_performer">Detalle Artista</string>
     <string name="detail_collector">Detalle Coleccionista</string>
@@ -34,5 +32,9 @@
     <string name="telefono">Teléfono</string>
     <string name="crearColeccionista">Crear Coleccionista</string>
     <string name="email">Correo electrónico</string>
-
+    <string name="directions">ltr</string>
+    <string name="hint_album_name">Nombre del album</string>
+    <string name="hint_album_release">Fecha de lanzamiento (formato año-mes-día)</string>
+    <string name="hint_album_image_url">Url de imagen del album</string>
+    <string name="hint_album_description">Descripción del album</string>
 </resources>

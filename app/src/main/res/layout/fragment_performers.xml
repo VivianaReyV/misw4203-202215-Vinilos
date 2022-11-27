@@ -4,22 +4,24 @@
     android:id="@+id/performers"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.performers.PerformerFragment"
     android:layout_marginStart="16dp"
     android:layout_marginEnd="16dp">
 
     <ProgressBar
         android:id="@+id/progressBar"
-        style="?android:attr/progressBarStyle"
+        style="?android:attr/progressBarStyleLarge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:indeterminate="true"
+        android:indeterminateTint="@color/dark_green"
         />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/performersRv"
         android:layout_width="match_parent"
-        android:layout_height="667dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="35dp"
         tools:listitem="@layout/performer_item"
         />
@@ -29,10 +31,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="end|bottom"
-        android:src="@drawable/plus_icon"
+        android:src="@drawable/plus_icon_white"
         android:layout_marginBottom="16dp"
         android:layout_marginEnd="5dp"
         android:contentDescription="@string/crearArtista"
-        android:backgroundTint="@color/green_home"/>
+        android:backgroundTint="@color/dark_green"/>
 
 </FrameLayout>

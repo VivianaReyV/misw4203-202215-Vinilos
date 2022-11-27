@@ -21,7 +21,6 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginStart="25dp"
-            android:layout_marginTop="10dp"
             android:layout_marginEnd="25dp"
             android:layout_marginBottom="5dp"
             android:text="@string/crearAlbum"
@@ -36,19 +35,20 @@
             android:layout_marginEnd="25dp"
             android:layout_marginBottom="5dp"
             android:text="@string/nombre"
-            android:textColor="@color/dark_green"></TextView>
+            android:textColor="@color/dark_green"
+            android:labelFor="@id/nombreAlbum"></TextView>
 
         <EditText
             android:id="@+id/nombreAlbum"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
             android:layout_marginStart="25dp"
             android:layout_marginTop="5dp"
             android:layout_marginEnd="25dp"
             android:layout_marginBottom="5dp"
             android:paddingStart="10dp"
             android:paddingEnd="10dp"
-            android:labelFor="@id/nombreAlbum"
             android:inputType="textCapSentences"
             android:background="@drawable/background_formulario"></EditText>
 
@@ -60,19 +60,20 @@
             android:layout_marginEnd="25dp"
             android:layout_marginBottom="5dp"
             android:text="@string/fecha_lanzamiento"
-            android:textColor="@color/dark_green"></TextView>
+            android:textColor="@color/dark_green"
+            android:labelFor="@id/fechaLanzamiento"></TextView>
 
         <EditText
             android:id="@+id/fechaLanzamiento"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
             android:layout_marginStart="25dp"
             android:layout_marginTop="5dp"
             android:layout_marginEnd="25dp"
             android:layout_marginBottom="5dp"
             android:paddingStart="10dp"
             android:paddingEnd="10dp"
-            android:hint="@string/hint_date_format"
             android:inputType="date"
             android:background="@drawable/background_formulario"></EditText>
 
@@ -84,12 +85,14 @@
             android:layout_marginEnd="25dp"
             android:layout_marginBottom="5dp"
             android:text="@string/descripcion"
-            android:textColor="@color/dark_green"></TextView>
+            android:textColor="@color/dark_green"
+            android:labelFor="@id/descripcion"></TextView>
 
         <EditText
             android:id="@+id/descripcion"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
             android:layout_marginStart="25dp"
             android:layout_marginTop="5dp"
             android:layout_marginEnd="25dp"
@@ -107,12 +110,14 @@
             android:layout_marginEnd="25dp"
             android:layout_marginBottom="5dp"
             android:text="@string/genero"
-            android:textColor="@color/dark_green"></TextView>
+            android:textColor="@color/dark_green"
+            android:labelFor="@id/spinnerGenre"></TextView>
 
         <Spinner
             android:id="@+id/spinnerGenre"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
             android:layout_marginStart="25dp"
             android:layout_marginTop="5dp"
             android:layout_marginEnd="25dp"
@@ -130,12 +135,14 @@
             android:layout_marginEnd="25dp"
             android:layout_marginBottom="5dp"
             android:text="@string/discografia"
-            android:textColor="@color/dark_green"></TextView>
+            android:textColor="@color/dark_green"
+            android:labelFor="@id/spinnerRecordLabel"></TextView>
 
         <Spinner
             android:id="@+id/spinnerRecordLabel"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
             android:layout_marginStart="25dp"
             android:layout_marginTop="5dp"
             android:layout_marginEnd="25dp"
@@ -153,12 +160,14 @@
             android:layout_marginEnd="25dp"
             android:layout_marginBottom="5dp"
             android:text="@string/portada"
-            android:textColor="@color/dark_green"></TextView>
+            android:textColor="@color/dark_green"
+            android:labelFor="@id/cover"></TextView>
 
         <EditText
             android:id="@+id/cover"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
             android:layout_marginStart="25dp"
             android:layout_marginTop="5dp"
             android:layout_marginEnd="25dp"
@@ -166,7 +175,6 @@
             android:background="@drawable/background_formulario"
             android:paddingStart="10dp"
             android:paddingEnd="10dp"
-            android:hint="@string/hint_cover_url"
             android:inputType="text"
             android:textColor="@color/dark_green"></EditText>
 
