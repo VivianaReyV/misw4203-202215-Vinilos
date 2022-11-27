@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/createCollector"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -26,7 +24,7 @@
             android:layout_marginBottom="5dp"
             android:text="@string/crearColeccionista"
             android:textColor="@color/dark_green"
-            android:textSize="22sp"></TextView>
+            android:textSize="22sp"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -37,7 +35,7 @@
             android:layout_marginBottom="5dp"
             android:text="@string/nombre"
             android:textColor="@color/dark_green"
-            android:labelFor="@id/nombreColeccionista"></TextView>
+            android:labelFor="@id/nombreColeccionista"/>
 
         <EditText
             android:id="@+id/nombreColeccionista"
@@ -51,7 +49,8 @@
             android:paddingStart="10dp"
             android:paddingEnd="10dp"
             android:inputType="textCapWords"
-            android:background="@drawable/background_formulario"></EditText>
+            android:importantForAutofill="no"
+            android:background="@drawable/background_formulario"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -62,7 +61,7 @@
             android:layout_marginBottom="5dp"
             android:text="@string/telefono"
             android:textColor="@color/dark_green"
-            android:labelFor="@id/telefono"></TextView>
+            android:labelFor="@id/telefono"/>
 
         <EditText
             android:id="@+id/telefono"
@@ -76,7 +75,8 @@
             android:paddingStart="10dp"
             android:paddingEnd="10dp"
             android:inputType="phone"
-            android:background="@drawable/background_formulario"></EditText>
+            android:importantForAutofill="no"
+            android:background="@drawable/background_formulario"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -87,7 +87,7 @@
             android:layout_marginBottom="5dp"
             android:text="@string/email"
             android:textColor="@color/dark_green"
-            android:labelFor="@id/email"></TextView>
+            android:labelFor="@id/email"/>
 
         <EditText
             android:id="@+id/email"
@@ -101,7 +101,8 @@
             android:paddingStart="10dp"
             android:paddingEnd="10dp"
             android:inputType="textEmailAddress"
-            android:background="@drawable/background_formulario"></EditText>
+            android:importantForAutofill="no"
+            android:background="@drawable/background_formulario"/>
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/createCollectorButton"

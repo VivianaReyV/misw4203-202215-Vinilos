@@ -1,9 +1,10 @@
 <resources>
     <string name="app_name">Vinilos</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="nav_header_desc">Navigation header</string>
+    <string name="nav_header_desc">Logo vinilos</string>
     <string name="title_albums">Albums</string>
     <string name="add_album">Agregar Album</string>
+    <string name="add_collector">Agregar Coleccionista</string>
     <string name="detail_album">Detalle Album</string>
     <string name="menu_album">Álbumes</string>
     <string name="menu_home">Home</string>
@@ -14,7 +15,7 @@
     <string name="nombre">Nombre</string>
     <string name="fecha_lanzamiento">Fecha de lanzamiento (Año-Mes-Día)</string>
     <string name="descripcion">Descripción</string>
-    <string name="discografia">Discografia</string>
+    <string name="discografia">Discografía</string>
     <string name="crearAlbum">Crear Álbum</string>
     <string name="portada">Portada</string>
     <string name="genero">Genero</string>
@@ -37,4 +38,16 @@
     <string name="hint_album_release">Fecha de lanzamiento (formato año-mes-día)</string>
     <string name="hint_album_image_url">Url de imagen del album</string>
     <string name="hint_album_description">Descripción del album</string>
+
+    <string name="alert_name_empty">El campo nombre no puede estar vacío</string>
+    <string name="alert_date_format_error">El campo Fecha de lanzamiento debe tener el formato aaaa-mm-dd</string>
+    <string name="alert_description_empty">El campo Descripción no puede estar vacío</string>
+    <string name="alert_cover_empty">El campo Portada no puede estar vacío</string>
+    <string name="alert_create_album_success">Albúm creado exitosamente</string>
+    <string name="alert_create_album_fail">Error al crear albúm</string>
+    <string name="alert_phone_empty">El campo teléfono no puede estar vacío</string>
+    <string name="alert_email_empty">El campo correo electrónico no puede estar vacíoo</string>
+    <string name="alert_email_format_error">El correo electrónico no es válido</string>
+    <string name="alert_create_collector_success">Coleccionista creado exitosamente</string>
+    <string name="alert_create_collector_fail">Error al crear coleccionista</string>
 </resources>
