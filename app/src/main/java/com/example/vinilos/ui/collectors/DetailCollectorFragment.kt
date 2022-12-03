@@ -56,7 +56,7 @@ class DetailCollectorFragment: Fragment() {
         return root
     }
 
-    fun createPerformerListView(name: String){
+    private fun createPerformerListView(name: String){
         val context = this.context
         // TextView Performer
         val layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,

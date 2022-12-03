@@ -1,7 +1,6 @@
 package com.example.vinilos
 
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import com.google.android.material.navigation.NavigationView
 import androidx.navigation.findNavController

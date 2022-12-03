@@ -91,7 +91,7 @@ class NetworkServiceAdapter constructor(context: Context) {
                         for(j in 0 until listFavoritePerformer.length()){
                             objFavoritePerformer = listFavoritePerformer[j] as JSONObject
                             favPerformers.add(j, Performer(
-                                performerId = objFavoritePerformer?.getInt("id"),
+                                performerId = objFavoritePerformer.getInt("id"),
                                 name = objFavoritePerformer.getString("name"),
                                 image = objFavoritePerformer.getString("image"),
                                 description = objFavoritePerformer.getString("description"),
@@ -109,7 +109,7 @@ class NetworkServiceAdapter constructor(context: Context) {
                             favoritePerformer2 = if(listFavoritePerformer.length() > 1) (listFavoritePerformer[1] as JSONObject).getString("name") else "",
                             favoritePerformer3 = if(listFavoritePerformer.length() > 2) (listFavoritePerformer[2] as JSONObject).getString("name") else ""
                         ))
-                    }catch(e:Exception){ }
+                    }catch(_:Exception){ }
                 }
                 cont.resume(list)
             },

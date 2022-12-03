@@ -34,10 +34,6 @@
     <string name="crearColeccionista">Crear Coleccionista</string>
     <string name="email">Correo electrónico</string>
     <string name="directions">ltr</string>
-    <string name="hint_album_name">Nombre del album</string>
-    <string name="hint_album_release">Fecha de lanzamiento (formato año-mes-día)</string>
-    <string name="hint_album_image_url">Url de imagen del album</string>
-    <string name="hint_album_description">Descripción del album</string>
 
     <string name="alert_name_empty">El campo nombre no puede estar vacío</string>
     <string name="alert_date_format_error">El campo Fecha de lanzamiento debe tener el formato aaaa-mm-dd</string>
