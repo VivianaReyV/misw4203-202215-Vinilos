@@ -10,7 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.vinilos.databinding.FragmentCreateCollectorBinding
 import com.example.vinilos.models.Collector
 import com.example.vinilos.viewmodels.CollectorViewModel
-
+import com.example.vinilos.R
 
 class  CreateCollectorFragment: Fragment() {
 
@@ -54,19 +54,24 @@ class  CreateCollectorFragment: Fragment() {
 
     private fun createCollector(view: View){
 
-        if (binding.nombreColeccionista.text.toString() == null || binding.nombreColeccionista.text.toString() == "")
+        if (binding.nombreColeccionista.text.toString() == "")
         {
-            formError("El campo nombre no puede estar vacío")
+            formError(getString(R.string.alert_name_empty))
             return
         }
-        if (binding.telefono.text.toString() == null || binding.telefono.text.toString() == "")
+        if (binding.telefono.text.toString() == "")
         {
-            formError("El campo teléfono no puede estar vacío")
+            formError(getString(R.string.alert_phone_empty))
             return
         }
-        if (binding.email.text.toString() == null || binding.email.text.toString() == "")
+        if (binding.email.text.toString() == "")
         {
-            formError("El campo Correo electrónico no puede estar vacío")
+            formError(getString(R.string.alert_email_empty))
+            return
+        }
+        if (!android.util.Patterns.EMAIL_ADDRESS.matcher(binding.email.text.toString()).matches())
+        {
+            formError(getString(R.string.alert_email_format_error))
             return
         }
         val collectorToCreate = Collector(null,
@@ -80,7 +85,7 @@ class  CreateCollectorFragment: Fragment() {
 
     private fun onSuccessCollectorCreated(){
         if(!viewModel.isCreateCollectorSuccessShown.value!!) {
-            Toast.makeText(activity, "Coleccionista creado exitosamente", Toast.LENGTH_LONG).show()
+            Toast.makeText(activity, getString(R.string.alert_create_collector_success), Toast.LENGTH_LONG).show()
             viewModel.onSuccessCollectorCreatedShown()
             activity?.onBackPressed()
         }
@@ -88,7 +93,7 @@ class  CreateCollectorFragment: Fragment() {
 
     private fun onNetworkError() {
         if (!viewModel.isNetworkErrorShown.value!!) {
-            Toast.makeText(activity, "Error al crear coleccionista", Toast.LENGTH_LONG).show()
+            Toast.makeText(activity, getString(R.string.alert_create_collector_fail), Toast.LENGTH_LONG).show()
             viewModel.onNetworkErrorShown()
         }
     }

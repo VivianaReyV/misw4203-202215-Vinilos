@@ -64,7 +64,7 @@ class DetailCollectorFragment: Fragment() {
         layoutParams.setMargins(0, 5, 0, 5)
         val tvPerformer = TextView(context)
         tvPerformer.layoutParams = layoutParams
-        tvPerformer.setTextSize(TypedValue.COMPLEX_UNIT_DIP,18F)
+        tvPerformer.setTextSize(TypedValue.COMPLEX_UNIT_SP,18F)
         tvPerformer.text = name
 
         binding.performersContainer.addView(tvPerformer)

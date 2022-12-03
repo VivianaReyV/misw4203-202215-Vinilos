@@ -20,6 +20,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:indeterminate="true"
+                android:indeterminateTint="@color/dark_green"
                 />
             <LinearLayout
                 android:id="@+id/mainContainer"
@@ -84,7 +85,7 @@
                     android:justificationMode="inter_word"
                     android:visibility="invisible"
                     android:text="@string/labelFavoritePerformers"
-                    android:textColor="@color/green_home"
+                    android:textColor="@color/dark_green"
                     android:textAlignment="textStart"/>
             <ScrollView
                 android:id="@+id/performersContainer"

@@ -1,6 +1,5 @@
 package com.example.vinilos.ui.album
 
-import android.R
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,7 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.vinilos.databinding.FragmentCreateAlbumBinding
 import com.example.vinilos.models.Album
 import com.example.vinilos.viewmodels.AlbumViewModel
-
+import com.example.vinilos.R
 
 class CreateAlbumFragment: Fragment() {
 
@@ -48,10 +47,10 @@ class CreateAlbumFragment: Fragment() {
         context?.let { context ->
             ArrayAdapter(
                 context,
-                R.layout.simple_spinner_item,
+                android.R.layout.simple_spinner_item,
                 genreItems
             ).also { adapter ->
-                adapter.setDropDownViewResource(R.layout.simple_spinner_dropdown_item)
+                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
                 binding.spinnerGenre.adapter = adapter
             }
         }
@@ -67,10 +66,10 @@ class CreateAlbumFragment: Fragment() {
         context?.let { context ->
             ArrayAdapter(
                 context,
-                R.layout.simple_spinner_item,
+                android.R.layout.simple_spinner_item,
                 recordlabelItems
             ).also { adapter ->
-                adapter.setDropDownViewResource(R.layout.simple_spinner_dropdown_item)
+                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
                 binding.spinnerRecordLabel.adapter = adapter
             }
         }
@@ -92,26 +91,25 @@ class CreateAlbumFragment: Fragment() {
     }
 
     private fun createAlbum(view: View){
-
-        if (binding.nombreAlbum.text.toString() == null || binding.nombreAlbum.text.toString() == "")
+        if (binding.nombreAlbum.text.toString() == "")
         {
-            formError("El campo nombre no puede estar vacío")
+            formError(getString(R.string.alert_name_empty))
             return
         }
         val regex = Regex("^\\d{4}-\\d{2}-\\d{2}$")
         if (!regex.matches(binding.fechaLanzamiento.text.toString()))
         {
-            formError("El campo Fecha de lanzamiento no es válido")
+            formError(getString(R.string.alert_date_format_error))
             return
         }
-        if (binding.descripcion.text.toString() == null || binding.descripcion.text.toString() == "")
+        if (binding.descripcion.text.toString() == "")
         {
-            formError("El campo Descripción no puede estar vacío")
+            formError(getString(R.string.alert_description_empty))
             return
         }
-        if (binding.cover.text.toString() == null || binding.cover.text.toString() == "")
+        if (binding.cover.text.toString() == "")
         {
-            formError("El campo Portada no puede estar vacío")
+            formError(getString(R.string.alert_cover_empty))
             return
         }
         val albumToCreate = Album(null,
@@ -128,7 +126,7 @@ class CreateAlbumFragment: Fragment() {
 
     private fun onSuccessAlbumCreated(){
         if(!viewModel.isCreateAlbumSuccessShown.value!!) {
-            Toast.makeText(activity, "Albúm creado exitosamente", Toast.LENGTH_LONG).show()
+            Toast.makeText(activity, getString(R.string.alert_create_album_success), Toast.LENGTH_LONG).show()
             viewModel.onSuccessAlbumCreatedShown()
             activity?.onBackPressed()
         }
@@ -136,7 +134,7 @@ class CreateAlbumFragment: Fragment() {
 
     private fun onNetworkError() {
         if (!viewModel.isNetworkErrorShown.value!!) {
-            Toast.makeText(activity, "Error al crear albúm", Toast.LENGTH_LONG).show()
+            Toast.makeText(activity, getString(R.string.alert_create_album_fail), Toast.LENGTH_LONG).show()
             viewModel.onNetworkErrorShown()
         }
     }
