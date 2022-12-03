@@ -78,6 +78,6 @@ class CollectorFragment : Fragment() {
     private fun clickButton(view: View){
         try{
             Navigation.findNavController(view).navigate(R.id.nav_create_collector)
-        }catch(err: Exception){ }
+        }catch(_: Exception){ }
     }
 }

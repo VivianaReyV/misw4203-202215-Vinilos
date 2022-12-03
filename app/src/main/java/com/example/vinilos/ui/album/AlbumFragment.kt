@@ -29,7 +29,7 @@ class AlbumFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         val albumViewModel =
             ViewModelProvider(this)[AlbumViewModel::class.java]
 
@@ -83,7 +83,7 @@ class AlbumFragment : Fragment() {
     private fun clickButton(view: View){
         try{
             Navigation.findNavController(view).navigate(R.id.nav_create_album)
-        }catch(err: Exception){
+        }catch(_: Exception){
 
         }
     }

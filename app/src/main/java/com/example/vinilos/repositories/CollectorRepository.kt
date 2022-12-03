@@ -1,7 +1,6 @@
 package com.example.vinilos.repositories
 
 import android.app.Application
-import com.example.vinilos.models.Album
 import com.example.vinilos.models.Collector
 import com.example.vinilos.models.CollectorPerformers
 import com.example.vinilos.network.NetworkServiceAdapter

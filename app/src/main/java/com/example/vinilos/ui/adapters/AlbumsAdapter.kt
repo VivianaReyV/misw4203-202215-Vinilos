@@ -57,7 +57,7 @@ class AlbumsAdapter : RecyclerView.Adapter<AlbumsAdapter.AlbumViewHolder>(){
     fun loadUrl(url: String, imgView : ImageView) {
         try {
             Glide.with(imgView).load(url).diskCacheStrategy(DiskCacheStrategy.ALL).error(R.drawable.coverdefault).into(imgView)
-        }catch (e : Exception){
+        }catch (_: Exception){
 
         }
 

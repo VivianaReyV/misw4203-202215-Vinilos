@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="purple_200">#CECECE</color>
-    <color name="purple_500">#ABAAA9</color>
     <color name="purple_700">#ABAAA9</color>
     <color name="teal_200">#CECECE</color>
     <color name="teal_700">#ABAAA9</color>
@@ -12,6 +11,4 @@
     <color name="dark_green">#2A7C66</color>
     <color name="white">#FFFFFF</color>
     <color name="tapa">#7A7673</color>
-    <color name="Skeptic">#CBECE9</color>
-    <color name="killarney">#2E5C39</color>
 </resources>

@@ -57,7 +57,7 @@ class PerformersAdapter : RecyclerView.Adapter<PerformersAdapter.PerformerViewHo
     fun loadUrl(url: String, imgView : ImageView) {
         try {
             Glide.with(imgView).load(url).diskCacheStrategy(DiskCacheStrategy.ALL).error(R.drawable.artist_cover).into(imgView)
-        }catch (e : Exception){
+        }catch (_: Exception){
 
         }
 
